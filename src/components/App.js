@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import '../App.css';
+import CategoriesList from './CategoriesList'
+
 
 class App extends Component {
   componentDidMount() {
@@ -11,9 +12,10 @@ class App extends Component {
 
   }
   render() {
+    const { categories } = this.props
     return (
       <div className="App">
-        Hello World!! {this.props.comments[1]}
+        <CategoriesList categories={categories}/>
       </div>
     );
   }
@@ -22,15 +24,5 @@ class App extends Component {
 function mapStateToProps({ posts, categories, comments }) {
   return{ posts, categories, comments }
 }
-
-/*function mapDispatchToProps(dispatch) {
-  return {
-    fetchPosts,
-    fetchCategories,
-    fetchComments : (data) => dispatch(fetchComments)
-  }
-}
-*/
-
 
 export default connect(mapStateToProps, actions)(App);

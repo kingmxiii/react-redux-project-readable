@@ -19,7 +19,7 @@ export function categories(state = [], action){
   console.log(action)
   switch(action.type){
     case FETCH_CATEGORIES:
-     return action.payload
+     return action.payload.categories
 
     default: return state;
   }
