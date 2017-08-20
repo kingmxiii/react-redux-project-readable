@@ -1,32 +1,34 @@
 import axios from 'axios'
 
-export const FETCH_POSTS = 'fetch_posts';
-export const FETCH_POST = 'fetch_post';
-export const FETCH_CATEGORIES = 'fetch_categories'
-export const FETCH_COMMENTS = 'fetch_comments'
+export const FETCH_POSTS = 'FETCH_POSTS';
+export const FETCH_POST = 'FETCH_POST';
+export const FETCH_CATEGORIES = 'FETCH_CATEGORIES'
+export const FETCH_COMMENTS = 'FETCH_COMMENTS'
 
 const ROOT_URL = 'http://localhost:5001'
-const  header = { Authorization: 'reypolanco' }
+const  headers = { Authorization: 'reypolanco' }
 
 export function fetchPosts(){
-  const request = axios.get(`${ROOT_URL}/posts`, { header })
-  return {
-    type: FETCH_POSTS,
-    payload: request
-  }
+  const request = axios.get(`${ROOT_URL}/posts`, { headers })
+  return (dispatch) => {
+      request.then(({ data }) => {
+        dispatch({ type: FETCH_POSTS, payload: data })
+      })
+    }
 }
 
 export function fetchComments(){
   return {
     type: FETCH_COMMENTS,
-    payload: {}
+    payload: {1:'hola', 2:'hello'}
   }
 }
 
 export function fetchCategories(){
-  const request = axios.get(`${ROOT_URL}/posts`, { header })
-  return {
-    type: FETCH_CATEGORIES,
-    payload: request
+  const request = axios.get(`${ROOT_URL}/categories`, { headers })
+  return (dispatch) => {
+    request.then(({ data }) => {
+      dispatch({ type: FETCH_CATEGORIES, payload: data })
+    })
   }
 }
