@@ -9,16 +9,18 @@ import {
 export function posts(state = {}, action){
   switch(action.type){
     case FETCH_POSTS:
-     return _.mapKeys(action.payload.data,'id')
+     return _.mapKeys(action.payload,'id')
     default: return state;
   }
 
 }
 
-export function categories(state = {}, action){
+export function categories(state = [], action){
+  console.log(action)
   switch(action.type){
     case FETCH_CATEGORIES:
-     return _.mapKeys(action.payload.data,'id')
+     return action.payload
+
     default: return state;
   }
 
@@ -27,7 +29,8 @@ export function categories(state = {}, action){
 export function comments(state = {}, action){
   switch(action.type){
     case FETCH_COMMENTS:
-     return _.mapKeys(action.payload.data,'id')
+     return action.payload
+
     default: return state;
   }
 
