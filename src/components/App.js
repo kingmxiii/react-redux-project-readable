@@ -1,14 +1,36 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 import '../App.css';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchCategories()
+    this.props.fetchComments()
+    this.props.fetchPosts()
+
+  }
   render() {
     return (
       <div className="App">
-        Hello World!!
+        Hello World!! {this.props.comments[1]}
       </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps({ posts, categories, comments }) {
+  return{ posts, categories, comments }
+}
+
+/*function mapDispatchToProps(dispatch) {
+  return {
+    fetchPosts,
+    fetchCategories,
+    fetchComments : (data) => dispatch(fetchComments)
+  }
+}
+*/
+
+
+export default connect(mapStateToProps, actions)(App);
