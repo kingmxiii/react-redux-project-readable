@@ -16,7 +16,6 @@ export function posts(state = {}, action){
 }
 
 export function categories(state = [], action){
-  console.log(action)
   switch(action.type){
     case FETCH_CATEGORIES:
      return action.payload.categories
@@ -29,8 +28,8 @@ export function categories(state = [], action){
 export function comments(state = {}, action){
   switch(action.type){
     case FETCH_COMMENTS:
-     return action.payload
-
+    console.log(action.payload)
+     return {...state, [action.postId] : _.mapKeys(action.payload, 'id')}
     default: return state;
   }
 

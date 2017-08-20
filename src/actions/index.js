@@ -17,11 +17,13 @@ export function fetchPosts(){
     }
 }
 
-export function fetchComments(){
-  return {
-    type: FETCH_COMMENTS,
-    payload: {1:'hola', 2:'hello'}
-  }
+export function fetchComments(postId){
+  const request = axios.get(`${ROOT_URL}/posts/${postId}/comments`, { headers })
+  return (dispatch) => {
+      request.then(({ data }) => {
+        dispatch({ type: FETCH_COMMENTS, payload: data, postId })
+      })
+    }
 }
 
 export function fetchCategories(){
