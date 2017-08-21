@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Categories({ categories }){
   return (
@@ -6,7 +7,9 @@ export default function Categories({ categories }){
       <ul className="categories-list">
         {categories.map((cat) => {
           return (
-            <li key={cat.name}>{cat.name}</li>
+            <Link to={`/${cat.path}`}>
+              <li key={cat.name}>{cat.name}</li>
+            </Link>
           )
         })}
       </ul>
