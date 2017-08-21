@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function Post(props){
-  const { post } = props
+  const { post, comments } = props
   return (
     <div className="post-item">
       <div className="post-header">
@@ -10,7 +10,8 @@ export default function Post(props){
       </div>
       <div className="post-tools">
         <div className="post-stats">
-            <span>{post.voteScore}</span>
+            <span>Scores: {post.voteScore} </span>
+            <span>Comments: { comments } </span>
         </div>
         <div className="post-actions">
         </div>

@@ -7,7 +7,7 @@ import Post from './Post'
 class PostList extends Component {
 
   componentDidMount() {
-    this.props.fetchComments("8xf0y6ziyjabvozdd253nd")
+
   }
 
   render(){
@@ -17,9 +17,11 @@ class PostList extends Component {
       <div className="posts-list">
          { _.map(posts, post => {
            if (comments[post.id] === undefined){
-
+              fetchComments(post.id)
            }
-            return <Post key={post.id} post={post}/>
+          const noComments = _.size(comments[post.id])
+
+            return <Post key={post.id} post={post} comments={noComments}/>
         })}
       </div>
     )
