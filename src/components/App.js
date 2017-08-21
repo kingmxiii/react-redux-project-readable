@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import CategoriesList from './CategoriesList'
 import PostList from './PostsList'
+import CategoryView from './CategoryView'
 
 
 class App extends Component {
@@ -14,13 +15,24 @@ class App extends Component {
   render() {
     const { categories, posts } = this.props
     return (
+      <BrowserRouter>
       <div className="App">
         <CategoriesList categories={categories}/>
-        <Route exact parth="/" render={ () => (
+
+
+        <div className="app-content">
+        <Route exact path="/" render={ () => (
           <PostList posts={posts}/>
         )}/>
 
+        <Route path="/:category" render={ ( history ) =>{
+          return (
+            <CategoryView posts={posts} category={history.match.params.category}/>
+         )}}/>
       </div>
+      </div>
+    </BrowserRouter>
+
     );
   }
 }
