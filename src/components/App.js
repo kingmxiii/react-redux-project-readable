@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom'
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import CategoriesList from './CategoriesList'
@@ -15,7 +16,10 @@ class App extends Component {
     return (
       <div className="App">
         <CategoriesList categories={categories}/>
-        <PostList posts={posts}/>
+        <Route exact parth="/" render={ () => (
+          <PostList posts={posts}/>
+        )}/>
+
       </div>
     );
   }
