@@ -7,8 +7,8 @@ export default function Categories({ categories }){
       <ul className="categories-list">
         {categories.map((cat) => {
           return (
-            <Link to={`/${cat.path}`}>
-              <li key={cat.name}>{cat.name}</li>
+            <Link key={cat.name} to={`/${cat.path}`}>
+              <li>{cat.name}</li>
             </Link>
           )
         })}
