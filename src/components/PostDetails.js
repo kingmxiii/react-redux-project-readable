@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchPost, fetchComments } from '../actions'
 import _ from 'lodash'
+import Vote from './Vote'
 
 class PostDetails extends Component {
   componentDidMount() {
@@ -19,7 +20,7 @@ class PostDetails extends Component {
       <div className="post-content">
         <h1 className="post-title">{post.title}</h1>
         <div className="post-toolbar">
-          {post.vote}
+          <Vote />
         </div>
         <div className="post-body">
           <p className="post-body-text">{post.body}</p>

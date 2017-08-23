@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Vote from './Vote'
 
 export default function Post(props){
   const { post, comments } = props
@@ -15,6 +16,7 @@ export default function Post(props){
             <span>Comments: { comments } </span>
         </div>
         <div className="post-actions">
+          <Vote />
         </div>
       </div>
     </div>
