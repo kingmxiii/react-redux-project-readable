@@ -5,7 +5,7 @@ export default class PostDetails extends Component {
     const { post } = this.props
     return(
       <div class="post-content">
-        <h1 className="post-title">{post-title}</h1>
+        <h1 className="post-title">{post.title}</h1>
         <div className="post-toolbar">
 
         </div>
