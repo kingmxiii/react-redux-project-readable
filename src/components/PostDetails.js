@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-export default class PostDetails extends Component {
+class PostDetails extends Component {
+
   render(){
     const { post } = this.props
     return(
-      <div class="post-content">
+      <div className="post-content">
         <h1 className="post-title">{post.title}</h1>
         <div className="post-toolbar">
 
@@ -20,3 +22,9 @@ export default class PostDetails extends Component {
     )
   }
 }
+
+function mapStateToProps({posts}, ownProps) {
+  return { post: posts[ownProps.match.params.post_id] }
+}
+
+export default connect(mapStateToProps)(PostDetails)

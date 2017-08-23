@@ -26,11 +26,7 @@ class App extends Component {
           <PostList posts={posts}/>
         )}/>
 
-        <Route path="/:category/:post_id" render={ ( history ) =>{
-          const post = posts[history.match.params.post_id]
-          return (
-            <PostDetails post={post} />
-         )}}/>
+        <Route path="/:category/:post_id" component={PostDetails}/>
 
         <Route exact path="/:category" render={ ( history ) =>{
           return (
