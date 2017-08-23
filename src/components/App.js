@@ -5,6 +5,7 @@ import * as actions from '../actions';
 import CategoriesList from './CategoriesList'
 import PostList from './PostsList'
 import CategoryView from './CategoryView'
+import PostDetails from './PostDetails'
 
 
 class App extends Component {
@@ -25,7 +26,13 @@ class App extends Component {
           <PostList posts={posts}/>
         )}/>
 
-        <Route path="/:category" render={ ( history ) =>{
+        <Route path="/:category/:post_id" render={ ( history ) =>{
+          const post = posts[history.match.params.post_id]
+          return (
+            <PostDetails post={post} />
+         )}}/>
+
+        <Route exact path="/:category" render={ ( history ) =>{
           return (
             <CategoryView posts={posts} category={history.match.params.category}/>
          )}}/>
