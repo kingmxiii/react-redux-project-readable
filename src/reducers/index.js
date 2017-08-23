@@ -2,6 +2,7 @@ import _ from 'lodash';
 import { combineReducers } from 'redux'
 import {
   FETCH_POSTS,
+  FETCH_POST,
   FETCH_CATEGORIES,
   FETCH_COMMENTS
 } from '../actions'
@@ -10,6 +11,8 @@ export function posts(state = {}, action){
   switch(action.type){
     case FETCH_POSTS:
      return _.mapKeys(action.payload,'id')
+    case FETCH_POST:
+      return { ...state, [action.postId]: action.payload }
     default: return state;
   }
 
@@ -28,7 +31,6 @@ export function categories(state = [], action){
 export function comments(state = {}, action){
   switch(action.type){
     case FETCH_COMMENTS:
-    console.log(action.payload)
      return {...state, [action.postId] : _.mapKeys(action.payload, 'id')}
     default: return state;
   }
