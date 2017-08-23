@@ -17,6 +17,15 @@ export function fetchPosts(){
     }
 }
 
+export function fetchPost(postId){
+  const request = axios.get(`${ROOT_URL}/posts/${postId}`, { headers })
+  return (dispatch) => {
+      request.then(({ data }) => {
+        dispatch({ type: FETCH_POST, payload: data, postId })
+      })
+    }
+}
+
 export function fetchComments(postId){
   const request = axios.get(`${ROOT_URL}/posts/${postId}/comments`, { headers })
   return (dispatch) => {
