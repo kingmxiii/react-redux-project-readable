@@ -20,7 +20,7 @@ class PostDetails extends Component {
       <div className="post-content">
         <h1 className="post-title">{post.title}</h1>
         <div className="post-toolbar">
-          <Vote />
+          <Vote postId={post.id}/>
         </div>
         <div className="post-body">
           <p className="post-body-text">{post.body}</p>

@@ -16,7 +16,7 @@ export default function Post(props){
             <span>Comments: { comments } </span>
         </div>
         <div className="post-actions">
-          <Vote />
+          <Vote postId={post.id} />
         </div>
       </div>
     </div>
