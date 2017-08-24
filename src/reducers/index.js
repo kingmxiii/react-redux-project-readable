@@ -4,7 +4,8 @@ import {
   FETCH_POSTS,
   FETCH_POST,
   FETCH_CATEGORIES,
-  FETCH_COMMENTS
+  FETCH_COMMENTS,
+  POST_VOTE
 } from '../actions'
 
 export function posts(state = {}, action){
@@ -13,9 +14,10 @@ export function posts(state = {}, action){
      return _.mapKeys(action.payload,'id')
     case FETCH_POST:
       return { ...state, [action.postId]: action.payload }
+    case POST_VOTE:
+      return { ...state, [action.payload.id]: action.payload }
     default: return state;
   }
-
 }
 
 export function categories(state = [], action){
