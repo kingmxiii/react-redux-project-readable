@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
+import { createPost } from '../actions'
 
 class PostForm extends Component {
   onSubmit(values){
@@ -10,10 +11,10 @@ class PostForm extends Component {
     })
   }
   render(){
-    const  { categories handlerSubmit } = this.props
+    const  { categories, handleSubmit } = this.props
     return (
     <div className="post-form-content">
-      <form onSubmit={handlerSubmit(this.onSubmit.bind(this))}>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <div>
           <label>Title</label>
           <div>
@@ -37,24 +38,13 @@ class PostForm extends Component {
           </div>
         </div>
         <div>
-          <label>Title</label>
+          <label>Author</label>
           <div>
             <Field
-            name="author"
+            name="owner"
             component="input"
             type="text"
             placeholder="Post Author"
-            />
-          </div>
-        </div>
-        <div>
-          <label>Title</label>
-          <div>
-            <Field
-            name="title"
-            component="input"
-            type="text"
-            placeholder="Post Title"
             />
           </div>
         </div>
@@ -89,5 +79,5 @@ export default reduxForm({
   form: 'PostForm'
 }
 )(
-  connect(mapStateToProps)(PostForm)
+  connect(mapStateToProps, { createPost })(PostForm)
 );
