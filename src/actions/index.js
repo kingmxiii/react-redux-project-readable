@@ -1,7 +1,8 @@
 import axios from 'axios'
 
-export const FETCH_POSTS = 'FETCH_POSTS';
-export const FETCH_POST = 'FETCH_POST';
+export const FETCH_POSTS = 'FETCH_POSTS'
+export const FETCH_POST = 'FETCH_POST'
+export const CREATE_POST = 'CREATE_POST'
 export const FETCH_CATEGORIES = 'FETCH_CATEGORIES'
 export const FETCH_COMMENTS = 'FETCH_COMMENTS'
 export const POST_VOTE = 'POST_VOTE'
@@ -34,12 +35,14 @@ export function createPost(values, callback){
     headers,
     data: { values }
   }
-).then(() => callback())
-/*  return (dispatch) => {
+)
+  return (dispatch) => {
     request.then(({ data }) => {
-      dispatch({ type: POST_VOTE, payload: data })
-    })*/
+      dispatch({ type: CREATE_POST, payload: data })
+      callback()
+    })
   }
+}
 
 export function fetchComments(postId){
   const request = axios.get(`${ROOT_URL}/posts/${postId}/comments`, { headers })
