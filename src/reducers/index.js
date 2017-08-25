@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import { combineReducers } from 'redux'
+import { reducer as form } from 'redux-form'
 import {
   FETCH_POSTS,
   FETCH_POST,
@@ -39,4 +40,4 @@ export function comments(state = {}, action){
 
 }
 
-export default combineReducers({posts, categories, comments})
+export default combineReducers({posts, categories, comments, form})
