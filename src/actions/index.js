@@ -27,6 +27,20 @@ export function fetchPost(postId){
     }
 }
 
+export function createPost(values, callback){
+  const request = axios({
+    url: `${ROOT_URL}/posts`,
+    method : 'post',
+    headers,
+    data: { values }
+  }
+).then(() => callback())
+/*  return (dispatch) => {
+    request.then(({ data }) => {
+      dispatch({ type: POST_VOTE, payload: data })
+    })*/
+  }
+
 export function fetchComments(postId){
   const request = axios.get(`${ROOT_URL}/posts/${postId}/comments`, { headers })
   return (dispatch) => {
