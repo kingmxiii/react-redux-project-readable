@@ -5,9 +5,9 @@ import { connect } from 'react-redux'
 import { createPost } from '../actions'
 
 class PostForm extends Component {
-  //Function to render fields dynamically 
+  //Function to render fields dynamically
   //Code from redux-form documentation
-  const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+  renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
     <div>
       <label>{label}</label>
       <div>
@@ -28,43 +28,32 @@ class PostForm extends Component {
     return (
 
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <div>
-          <label>Title</label>
           <div>
             <Field
             name="title"
-            component="input"
+            label="Title"
+            component={this.renderField}
             type="text"
-            placeholder="Post Title"
             />
           </div>
-        </div>
-        <div>
-          <label>Body</label>
           <div>
             <Field
             name="body"
-            component="input"
+            label="Body"
+            component={this.renderField}
             type="textarea"
-            placeholder="Post Body"
             />
           </div>
-        </div>
-        <div>
-          <label>Author</label>
           <div>
             <Field
             name="owner"
-            component="input"
+            label="Author"
+            component={this.renderField}
             type="text"
-            placeholder="Post Author"
             />
           </div>
-        </div>
         <div>
-        <label>Category</label>
-        <div>
-          <Field name="category" component="select">
+          <Field name="category" component="select" label="Category">
             <option value="">Select a category...</option>
             {categories.map(category =>
               <option value={category.name} key={category.name}>
@@ -73,7 +62,6 @@ class PostForm extends Component {
             )}
           </Field>
         </div>
-      </div>
       <button type="submit" className="btn btn-primary">Save</button>
       <Link to="/" className="btn btn-danger">Cancel</Link>
       </form>
