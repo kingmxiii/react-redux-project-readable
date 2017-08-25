@@ -4,6 +4,11 @@ import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 
 class PostForm extends Component {
+  onSubmit(values){
+    this.props.createPost(values, () => {
+      this.props.history.push('/')
+    })
+  }
   render(){
     const  { categories } = this.props
     return (
