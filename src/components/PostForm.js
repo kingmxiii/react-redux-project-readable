@@ -10,10 +10,10 @@ class PostForm extends Component {
     })
   }
   render(){
-    const  { categories } = this.props
+    const  { categories handlerSubmit } = this.props
     return (
     <div className="post-form-content">
-      <form>
+      <form onSubmit={handlerSubmit(this.onSubmit.bind(this))}>
         <div>
           <label>Title</label>
           <div>
