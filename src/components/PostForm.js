@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 
@@ -65,6 +66,8 @@ class PostForm extends Component {
           </Field>
         </div>
       </div>
+      <button type="submit" className="btn btn-primary">Save</button>
+      <Link to="/" className="btn btn-danger">Cancel</Link>
       </form>
     </div>
   )
