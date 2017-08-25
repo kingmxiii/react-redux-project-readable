@@ -17,7 +17,7 @@ class PostForm extends Component {
     </div>
   )
   onSubmit(values){
-    values.id = "1234567890"
+    values.id = Date.now().toString()
     values.timestamp = Date.now()
     this.props.createPost(values, () => {
       this.props.history.push('/')
