@@ -33,7 +33,7 @@ export function createPost(values, callback){
     url: `${ROOT_URL}/posts`,
     method : 'post',
     headers,
-    data: { values }
+    data: values 
   }
 )
   return (dispatch) => {
