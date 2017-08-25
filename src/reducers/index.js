@@ -4,6 +4,7 @@ import { reducer as form } from 'redux-form'
 import {
   FETCH_POSTS,
   FETCH_POST,
+  CREATE_POST,
   FETCH_CATEGORIES,
   FETCH_COMMENTS,
   POST_VOTE
@@ -16,6 +17,8 @@ export function posts(state = {}, action){
     case FETCH_POST:
       return { ...state, [action.postId]: action.payload }
     case POST_VOTE:
+      return { ...state, [action.payload.id]: action.payload }
+    case CREATE_POST:
       return { ...state, [action.payload.id]: action.payload }
     default: return state;
   }
