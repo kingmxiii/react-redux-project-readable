@@ -5,7 +5,20 @@ import { connect } from 'react-redux'
 import { createPost } from '../actions'
 
 class PostForm extends Component {
+  //Function to render fields dynamically 
+  //Code from redux-form documentation
+  const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+    <div>
+      <label>{label}</label>
+      <div>
+        <input {...input} placeholder={label} type={type}/>
+        {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+      </div>
+    </div>
+  )
   onSubmit(values){
+    values.id = "1234567890"
+    values.timestamp = Date.now()
     this.props.createPost(values, () => {
       this.props.history.push('/')
     })
@@ -13,7 +26,7 @@ class PostForm extends Component {
   render(){
     const  { categories, handleSubmit } = this.props
     return (
-    <div className="post-form-content">
+
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <div>
           <label>Title</label>
@@ -64,7 +77,6 @@ class PostForm extends Component {
       <button type="submit" className="btn btn-primary">Save</button>
       <Link to="/" className="btn btn-danger">Cancel</Link>
       </form>
-    </div>
   )
   }
 }
