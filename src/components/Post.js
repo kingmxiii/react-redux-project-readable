@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Vote from './Vote'
 
 export default function Post(props){
-  const { post, comments } = props
+  const { post, comments, deletePost } = props
   return (
     <div className="post-item">
       <div className="post-header">
@@ -18,6 +18,7 @@ export default function Post(props){
         <div className="post-actions">
           <Vote postId={post.id} />
           <Link to={`/post/action/edit/${post.id}`}>Edit</Link>
+          <span onClick={ () =>{ deletePost(post.id) }} >Delete</span>
         </div>
       </div>
     </div>
