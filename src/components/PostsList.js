@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchComments } from '../actions'
+import { fetchComments, deletePost } from '../actions'
 import _ from 'lodash'
 import Post from './Post'
 
@@ -12,7 +12,7 @@ class PostList extends Component {
 
   render(){
 
-    const { posts, comments, fetchComments } = this.props
+    const { posts, comments, fetchComments, deletePost } = this.props
     return(
       <div className="posts-list">
          { _.map(posts, post => {
@@ -21,7 +21,7 @@ class PostList extends Component {
            }
           const noComments = _.size(comments[post.id])
 
-            return <Post key={post.id} post={post} comments={noComments}/>
+            return <Post key={post.id} post={post} comments={noComments} deletePost={deletePost}/>
         })}
       </div>
     )
@@ -32,4 +32,4 @@ function mapStateToProps({comments}) {
   return{comments}
 }
 
-export default connect(mapStateToProps, {fetchComments})(PostList)
+export default connect(mapStateToProps, { fetchComments, deletePost })(PostList)
