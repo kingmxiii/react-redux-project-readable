@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Field, reduxForm, initialize } from 'redux-form'
 import { connect } from 'react-redux'
-import { createPost } from '../actions'
+import { createPost, updatePost } from '../actions'
 
 class PostForm extends Component {
 
@@ -33,11 +33,19 @@ class PostForm extends Component {
     </div>
   )
   onSubmit(values){
-    values.id = Date.now().toString()
-    values.timestamp = Date.now()
-    this.props.createPost(values, () => {
-      this.props.history.push('/')
-    })
+    const { mode, id } = this.props.match.params
+    if(mode === 'new'){
+      values.id = Date.now().toString()
+      values.timestamp = Date.now()
+      this.props.createPost(values, () => {
+        this.props.history.push('/')
+      })
+    }
+    else{
+      this.props.updatePost(id, values, () => {
+        this.props.history.push('/')
+      })
+    }
   }
   render(){
     const  { categories, handleSubmit } = this.props
@@ -104,5 +112,5 @@ export default reduxForm({
   form: 'PostForm'
 }
 )(
-  connect(mapStateToProps, { createPost })(PostForm)
+  connect(mapStateToProps, { createPost, updatePost })(PostForm)
 );
