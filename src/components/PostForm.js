@@ -1,15 +1,26 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, initialize } from 'redux-form'
 import { connect } from 'react-redux'
 import { createPost } from '../actions'
 
 class PostForm extends Component {
 
   componentDidMount() {
-    const { mode, id } = this.props.match.params
-
+    const { mode } = this.props.match.params
+    if(mode === 'edit'){
+        this.initForm()
+    }
   }
+
+  initForm(){
+    const { title, body } = this.props.post
+    const formData = { title, body }
+    this.props.initialize(formData);
+  }
+
+
+
   //Function to render fields dynamically
   //Code from redux-form documentation
   renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
@@ -80,9 +91,12 @@ class PostForm extends Component {
   }
 }
 
-function mapStateToProps({ categories }){
-  return {
-    categories
+function mapStateToProps({ posts, categories, formdata }, ownProps){
+  const { id } = ownProps.match.params
+  return{
+    post: posts[id],
+    categories,
+    form: formdata
   }
 }
 
