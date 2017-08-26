@@ -17,6 +17,7 @@ export default function Post(props){
         </div>
         <div className="post-actions">
           <Vote postId={post.id} />
+          <Link to={`/post/action/edit/${post.id}`}>Edit</Link>
         </div>
       </div>
     </div>
