@@ -48,7 +48,7 @@ export function createPost(values, callback){
 export function updatePost(id,values, callback){
   const request = axios({
     url: `${ROOT_URL}/posts/${id}`,
-    method : 'post',
+    method : 'put',
     headers,
     data: values
   }
