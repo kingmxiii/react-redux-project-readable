@@ -9,6 +9,7 @@ import {
   FETCH_COMMENTS,
   POST_VOTE,
   UPDATE_POST,
+  DELETE_POST
 } from '../actions'
 
 export function posts(state = {}, action){
@@ -23,6 +24,8 @@ export function posts(state = {}, action){
       return { ...state, [action.payload.id]: action.payload }
     case UPDATE_POST:
       return { ...state, [action.payload.id]: action.payload }
+    case DELETE_POST:
+      return _.omit(state, action.payload)
     default: return state;
   }
 }
