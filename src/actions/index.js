@@ -7,6 +7,7 @@ export const FETCH_CATEGORIES = 'FETCH_CATEGORIES'
 export const FETCH_COMMENTS = 'FETCH_COMMENTS'
 export const POST_VOTE = 'POST_VOTE'
 export const UPDATE_POST = 'UPDATE_POST'
+export const DELETE_POST = 'DELETE_POST'
 
 const ROOT_URL = 'http://localhost:5001'
 const  headers = { Authorization: 'reypolanco' }
@@ -57,6 +58,20 @@ export function updatePost(id,values, callback){
     request.then(({ data }) => {
       dispatch({ type: UPDATE_POST, payload: data })
       callback()
+    })
+  }
+}
+
+export function deletePost(id){
+  const request = axios({
+    url: `${ROOT_URL}/posts/${id}`,
+    method : 'delete',
+    headers
+  }
+)
+  return (dispatch) => {
+    request.then(({ data }) => {
+      dispatch({ type: DELETE_POST, payload: id })
     })
   }
 }
