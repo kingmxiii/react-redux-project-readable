@@ -7,7 +7,8 @@ import {
   CREATE_POST,
   FETCH_CATEGORIES,
   FETCH_COMMENTS,
-  POST_VOTE
+  POST_VOTE,
+  UPDATE_POST,
 } from '../actions'
 
 export function posts(state = {}, action){
@@ -19,6 +20,8 @@ export function posts(state = {}, action){
     case POST_VOTE:
       return { ...state, [action.payload.id]: action.payload }
     case CREATE_POST:
+      return { ...state, [action.payload.id]: action.payload }
+    case UPDATE_POST:
       return { ...state, [action.payload.id]: action.payload }
     default: return state;
   }
