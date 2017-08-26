@@ -15,7 +15,10 @@ import {
 export function posts(state = {}, action){
   switch(action.type){
     case FETCH_POSTS:
-     return _.mapKeys(action.payload,'id')
+     const activePosts = action.payload.filter((post) => {
+       return !post.deleted
+     })
+     return _.mapKeys(activePosts,'id')
     case FETCH_POST:
       return { ...state, [action.postId]: action.payload }
     case POST_VOTE:
