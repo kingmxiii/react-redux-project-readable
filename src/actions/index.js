@@ -6,6 +6,7 @@ export const CREATE_POST = 'CREATE_POST'
 export const FETCH_CATEGORIES = 'FETCH_CATEGORIES'
 export const FETCH_COMMENTS = 'FETCH_COMMENTS'
 export const POST_VOTE = 'POST_VOTE'
+export const UPDATE_POST = 'UPDATE_POST'
 
 const ROOT_URL = 'http://localhost:5001'
 const  headers = { Authorization: 'reypolanco' }
@@ -33,12 +34,28 @@ export function createPost(values, callback){
     url: `${ROOT_URL}/posts`,
     method : 'post',
     headers,
-    data: values 
+    data: values
   }
 )
   return (dispatch) => {
     request.then(({ data }) => {
       dispatch({ type: CREATE_POST, payload: data })
+      callback()
+    })
+  }
+}
+
+export function updatePost(id,values, callback){
+  const request = axios({
+    url: `${ROOT_URL}/posts/${id}`,
+    method : 'post',
+    headers,
+    data: values
+  }
+)
+  return (dispatch) => {
+    request.then(({ data }) => {
+      dispatch({ type: UPDATE_POST, payload: data })
       callback()
     })
   }
@@ -75,5 +92,4 @@ export function postVote(postId, option){
       dispatch({ type: POST_VOTE, payload: data })
     })
   }
-
 }
