@@ -5,6 +5,11 @@ import { connect } from 'react-redux'
 import { createPost } from '../actions'
 
 class PostForm extends Component {
+
+  componentDidMount() {
+    const { mode, id } = this.props.match.params
+
+  }
   //Function to render fields dynamically
   //Code from redux-form documentation
   renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
@@ -25,6 +30,7 @@ class PostForm extends Component {
   }
   render(){
     const  { categories, handleSubmit } = this.props
+    const { mode } = this.props.match.params
     return (
 
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
@@ -44,6 +50,7 @@ class PostForm extends Component {
             type="textarea"
             />
           </div>
+          { (mode === "new") &&
           <div>
             <Field
             name="owner"
@@ -52,6 +59,8 @@ class PostForm extends Component {
             type="text"
             />
           </div>
+        }
+        { (mode === "new") &&
         <div>
           <Field name="category" component="select" label="Category">
             <option value="">Select a category...</option>
@@ -62,6 +71,8 @@ class PostForm extends Component {
             )}
           </Field>
         </div>
+      }
+
       <button type="submit" className="btn btn-primary">Save</button>
       <Link to="/" className="btn btn-danger">Cancel</Link>
       </form>
