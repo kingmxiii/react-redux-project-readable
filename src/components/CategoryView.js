@@ -9,7 +9,7 @@ export default function CategoryView(props) {
     return post.category === category
   })
   return (
-    <div className="category-vie">
+    <div className="category-view">
       <h1>{category}</h1>
       <PostsList posts={catPosts}/>
     </div>
