@@ -17,7 +17,7 @@ export function posts(state = {}, action){
     case FETCH_POSTS:
      const activePosts = action.payload.filter((post) => {
        return !post.deleted
-     })
+     }).sort(function(a,b){ return b.voteScore - a.voteScore})
      return _.mapKeys(activePosts,'id')
     case FETCH_POST:
       return { ...state, [action.postId]: action.payload }
