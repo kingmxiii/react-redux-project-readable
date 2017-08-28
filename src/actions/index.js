@@ -14,9 +14,10 @@ const  headers = { Authorization: 'reypolanco' }
 
 export function fetchPosts(){
   const request = axios.get(`${ROOT_URL}/posts`, { headers })
-  return (dispatch) => {
+  return (dispatch, getState) => {
       request.then(({ data }) => {
-        dispatch({ type: FETCH_POSTS, payload: data })
+        const settings = getState().appSettings.posts
+        dispatch({ type: FETCH_POSTS, payload: data, settings })
       })
     }
 }
