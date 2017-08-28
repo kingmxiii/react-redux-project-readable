@@ -12,17 +12,23 @@ import {
   DELETE_POST
 } from '../actions'
 
-export appSettings = {
-  post: { sortKey: "voteScore", sortOrder: "desc"} 
+export const initialSettings = {
+  posts: { sortKey: "voteScore", sortOrder: "desc"}
 }
 
+export function appSettings(state = initialSettings, action){
+  switch(action.type){
+    default:
+      return state
+  }
+}
 export function posts(state = {}, action){
   switch(action.type){
     case FETCH_POSTS:
      const activePosts = action.payload.filter((post) => {
        return !post.deleted
-     }).sort(function(a,b){ return b.voteScore - a.voteScore})
-     return _.mapKeys(activePosts,'id')
+     })
+     return _.mapKeys(_.orderBy(activePosts, action.settings.sortKey, action.settings.sortOrder),'id')
     case FETCH_POST:
       return { ...state, [action.postId]: action.payload }
     case POST_VOTE:
@@ -57,4 +63,4 @@ export function comments(state = {}, action){
 
 }
 
-export default combineReducers({posts, categories, comments, form})
+export default combineReducers({posts, categories, comments, form, appSettings})
