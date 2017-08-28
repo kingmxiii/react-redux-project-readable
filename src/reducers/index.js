@@ -12,6 +12,10 @@ import {
   DELETE_POST
 } from '../actions'
 
+export appSettings = {
+  post: { sortKey: "voteScore", sortOrder: "desc"} 
+}
+
 export function posts(state = {}, action){
   switch(action.type){
     case FETCH_POSTS:
