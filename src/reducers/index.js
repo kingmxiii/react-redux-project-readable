@@ -22,7 +22,8 @@ export function posts(state = {}, action){
     case FETCH_POST:
       return { ...state, [action.postId]: action.payload }
     case POST_VOTE:
-      return { ...state, [action.payload.id]: action.payload }
+        const tempState = { ...state, [action.payload.id]: action.payload }
+      return _.mapKeys(_.orderBy(tempState,'voteScore','desc'), 'id')
     case CREATE_POST:
       return { ...state, [action.payload.id]: action.payload }
     case UPDATE_POST:
