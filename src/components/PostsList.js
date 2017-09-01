@@ -28,8 +28,8 @@ class PostList extends Component {
   }
 }
 
-function mapStateToProps({comments}) {
-  return{comments}
+function mapStateToProps({posts, comments}) {
+  return{posts ,comments}
 }
 
 export default connect(mapStateToProps, { fetchComments, deletePost })(PostList)

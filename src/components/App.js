@@ -24,9 +24,7 @@ class App extends Component {
         <Link to="/post/action/edit/8xf0y6ziyjabvozdd253nd">New Post</Link>
 
         <div className="app-content">
-        <Route exact path="/" render={ () => (
-          <PostList posts={posts}/>
-        )}/>
+        <Route exact path="/" component={PostList}/>
 
         <Route exact path="/post/action/:mode" component={PostForm}/>
         <Route exact path="/post/action/:mode/:id" component={PostForm}/>
