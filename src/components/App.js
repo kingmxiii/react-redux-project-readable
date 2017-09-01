@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import AppMenu from './AppMenu'
 import CategoriesList from './CategoriesList'
 import PostList from './PostsList'
 import CategoryView from './CategoryView'
@@ -19,6 +20,9 @@ class App extends Component {
     return (
       <BrowserRouter>
       <div className="App container">
+        <div className="app-navbar">
+          <AppMenu/>
+        </div>
         <CategoriesList categories={categories}/>
         <Link to="/post/action/new">New Post</Link>
         <Link to="/post/action/edit/8xf0y6ziyjabvozdd253nd">New Post</Link>
