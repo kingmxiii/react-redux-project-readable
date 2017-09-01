@@ -18,7 +18,7 @@ class App extends Component {
     const { categories, posts } = this.props
     return (
       <BrowserRouter>
-      <div className="App">
+      <div className="App container">
         <CategoriesList categories={categories}/>
         <Link to="/post/action/new">New Post</Link>
         <Link to="/post/action/edit/8xf0y6ziyjabvozdd253nd">New Post</Link>
