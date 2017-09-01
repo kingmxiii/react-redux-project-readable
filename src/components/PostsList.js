@@ -12,7 +12,7 @@ class PostList extends Component {
 
   render(){
 
-    const { posts, comments, fetchComments, deletePost } = this.props
+    const { posts, comments, fetchComments, deletePost, history } = this.props
     return(
       <div className="posts-list">
          { _.map(posts, post => {
@@ -21,7 +21,7 @@ class PostList extends Component {
            }
           const noComments = _.size(comments[post.id])
 
-            return <Post key={post.id} post={post} comments={noComments} deletePost={deletePost}/>
+            return <Post key={post.id} post={post} comments={noComments} deletePost={deletePost} postHistory={history}/>
         })}
       </div>
     )

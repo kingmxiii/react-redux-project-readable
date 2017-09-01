@@ -4,7 +4,7 @@ import { DropdownButton, MenuItem } from 'react-bootstrap'
 import Vote from './Vote'
 
 export default function Post(props){
-  const { post, comments, deletePost } = props
+  const { post, comments, deletePost, postHistory } = props
   return (
     <div className="post-item">
       <div className="row post-header">
@@ -14,8 +14,8 @@ export default function Post(props){
         </div>
         <div className="post-menu col-md-2 col-sm-2 col-xs-2">
           <DropdownButton bsStyle="default" title="..." noCaret id="dropdown-no-caret">
-            <MenuItem eventKey="1"><Link to={`/${post.category}/${post.id}`}>View</Link></MenuItem>
-            <MenuItem eventKey="2"><Link to={`/post/action/edit/${post.id}`}>Edit</Link></MenuItem>
+            <MenuItem eventKey="1" onClick={ () => { postHistory.push(`/${post.category}/${post.id}`)}}>View</MenuItem>
+            <MenuItem eventKey="2" onClick={ () => { postHistory.push(`/post/action/edit/${post.id}`)}}>Edit</MenuItem>
             <MenuItem eventKey="3">  <span onClick={ () =>{ deletePost(post.id) }} >Delete</span></MenuItem>
           </DropdownButton>
         </div>
