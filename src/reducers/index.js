@@ -9,7 +9,8 @@ import {
   FETCH_COMMENTS,
   POST_VOTE,
   UPDATE_POST,
-  DELETE_POST
+  DELETE_POST,
+  UPDATE_POST_SORT
 } from '../actions'
 
 export const initialSettings = {
@@ -18,6 +19,8 @@ export const initialSettings = {
 
 export function appSettings(state = initialSettings, action){
   switch(action.type){
+    case UPDATE_POST_SORT:
+      return = { ...state, 'posts': action.criteria }
     default:
       return state
   }
