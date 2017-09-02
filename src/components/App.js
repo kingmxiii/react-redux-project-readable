@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
-import { connect } from 'react-redux';
-import * as actions from '../actions';
+import { connect } from 'react-redux'
+import * as actions from '../actions'
 import AppMenu from './AppMenu'
 import PostList from './PostsList'
 import CategoryView from './CategoryView'
@@ -41,15 +41,16 @@ class App extends Component {
       </div>
       </div>
     </BrowserRouter>
-
     );
   }
 }
 
 function mapStateToProps({ posts, categories, comments, appSettings }) {
   return{
-    posts: _.mapKeys(_.orderBy(posts, appSettings.sortKey, appSettings.sortOrder), 'id'),
-    categories }
+    posts: _.mapKeys(_.orderBy(posts, appSettings.posts.sortKey, appSettings.posts.sortOrder), 'id'),
+    categories,
+    appSettings
+   }
 }
 
 export default connect(mapStateToProps, actions)(App);
