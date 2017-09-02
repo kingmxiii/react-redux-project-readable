@@ -1,5 +1,7 @@
 import React from 'react'
 import { Navbar, Nav , NavItem} from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { LinkContainer } from 'react-router-bootstrap'
 
 export default function AppMenu(props){
   return (
@@ -12,7 +14,9 @@ export default function AppMenu(props){
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav>
-          <NavItem eventKey={1} href="/">Home</NavItem>
+          <LinkContainer to="/">
+            <NavItem>Home</NavItem>
+          </LinkContainer>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
