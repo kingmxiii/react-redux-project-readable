@@ -79,11 +79,11 @@ export function deletePost(id){
 }
 
 export function sortPost(criteria){
-  const sortArr = criteria.split('-')
+  const { sortKey, sortOrder } = criteria
   return {
     type: UPDATE_POST_SORT,
-    sortKey: sortArr[0],
-    sortOrder: sortArr[1]
+    sortKey,
+    sortOrder
   }
 }
 
