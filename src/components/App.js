@@ -18,11 +18,11 @@ class App extends Component {
     const { categories, posts } = this.props
     return (
       <BrowserRouter>
-      <div className="App container">
+      <div className="App">
         <div className="app-navbar">
           <AppMenu cats={categories} />
         </div>
-        <div className="app-content">
+        <div className="app-content container">
         <Route exact path="/" render={ (history) => {
           return(
             <PostList posts={posts} />
