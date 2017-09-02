@@ -23,3 +23,12 @@ body {
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
+
+.post-item .btn-default {
+  border:none;
+}
+
+.post-item h4 {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+}

@@ -23,8 +23,10 @@ export default function Post(props){
       </div>
       <div className="post-header row">
         <div className="post-title">
-          <Link to={`/${post.category}/${post.id}`}><h3>{post.title}</h3></Link>
-          <span>{post.author}</span>
+          <Link to={`/${post.category}/${post.id}`}>
+            <h4>{post.title}</h4>
+          </Link>
+          <span>By: {post.author}</span>
         </div>
 
       </div>
