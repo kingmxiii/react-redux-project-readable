@@ -21,15 +21,15 @@ class PostList extends Component {
            }
           const noComments = _.size(comments[post.id])
 
-            return <Post key={post.id} post={post} comments={noComments} deletePost={deletePost} postHistory={history}/>
+            return <Post key={post.id} post={post} comments={noComments} deletePost={deletePost}/>
         })}
       </div>
     )
   }
 }
 
-function mapStateToProps({posts, comments}) {
-  return{posts ,comments}
+function mapStateToProps({ comments }) {
+  return{comments}
 }
 
 export default connect(mapStateToProps, { fetchComments, deletePost })(PostList)
