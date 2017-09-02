@@ -3,6 +3,7 @@ import axios from 'axios'
 export const FETCH_POSTS = 'FETCH_POSTS'
 export const FETCH_POST = 'FETCH_POST'
 export const CREATE_POST = 'CREATE_POST'
+export const UPDATE_POST_SORT = 'UPDATE_POST_SORT'
 export const FETCH_CATEGORIES = 'FETCH_CATEGORIES'
 export const FETCH_COMMENTS = 'FETCH_COMMENTS'
 export const POST_VOTE = 'POST_VOTE'
@@ -74,6 +75,15 @@ export function deletePost(id){
     request.then(({ data }) => {
       dispatch({ type: DELETE_POST, payload: id })
     })
+  }
+}
+
+export function sortPost(criteria){
+  const sortArr = criteria.split('-')
+  return {
+    type: UPDATE_POST_SORT,
+    sortKey: sortArr[0],
+    sortOrder: sortArr[1]
   }
 }
 
