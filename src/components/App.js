@@ -7,6 +7,7 @@ import PostList from './PostsList'
 import CategoryView from './CategoryView'
 import PostDetails from './PostDetails'
 import PostForm from './PostForm'
+import '../App.css'
 
 
 class App extends Component {
