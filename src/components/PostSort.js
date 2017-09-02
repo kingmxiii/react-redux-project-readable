@@ -16,6 +16,7 @@ class PostSort extends Component {
       <span>
         <DropdownButton bsStyle="default" title="Sort By" id="post-sort-dropdown" onSelect={ (eventKey, event) => {
           event.preventDefault()
+          this.props.sortPost(sortOptions[eventKey])
         }}>
           <MenuItem eventKey={0}>Higher Votes</MenuItem>
           <MenuItem eventKey={1}>Lower Votes</MenuItem>
