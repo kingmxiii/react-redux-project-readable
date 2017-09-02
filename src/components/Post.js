@@ -8,12 +8,8 @@ export default function Post(props){
   const { post, comments, deletePost } = props
   return (
     <div className="post-item">
-      <div className="row post-header">
-        <div className="post-title col-md-10 col-sm-10 col-xs-10">
-          <Link to={`/${post.category}/${post.id}`}><h3>{post.title}</h3></Link>
-          <span>{post.author}</span>
-        </div>
-        <div className="post-menu col-md-2 col-sm-2 col-xs-2">
+      <div className="post-handle row">
+        <div className="post-menu pull-right">
           <DropdownButton bsStyle="default" title="..." noCaret id="dropdown-no-caret">
             <LinkContainer to={`/${post.category}/${post.id}`} >
               <MenuItem eventKey="1">View</MenuItem>
@@ -24,6 +20,13 @@ export default function Post(props){
             <MenuItem eventKey="3">  <span onClick={ () =>{ deletePost(post.id) }} >Delete</span></MenuItem>
           </DropdownButton>
         </div>
+      </div>
+      <div className="post-header row">
+        <div className="post-title">
+          <Link to={`/${post.category}/${post.id}`}><h3>{post.title}</h3></Link>
+          <span>{post.author}</span>
+        </div>
+
       </div>
       <div className="row post-tools">
         <div className="post-stats">
