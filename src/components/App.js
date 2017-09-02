@@ -20,11 +20,14 @@ class App extends Component {
       <BrowserRouter>
       <div className="App container">
         <div className="app-navbar">
-          <AppMenu cat={categories} />
+          <AppMenu cats={categories} />
         </div>
         <div className="app-content">
-        <Route exact path="/" component={PostList}/>
-
+        <Route exact path="/" render={ (history) => {
+          return(
+            <PostList posts={posts} />
+          )
+        }}/>
         <Route exact path="/post/action/:mode" component={PostForm}/>
         <Route exact path="/post/action/:mode/:id" component={PostForm}/>
         <Route exact path="/:category/:post_id" component={PostDetails}/>
