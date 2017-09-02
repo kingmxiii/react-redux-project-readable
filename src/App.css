@@ -32,3 +32,15 @@ body {
   margin-top: 5px !important;
   margin-bottom: 5px !important;
 }
+
+.post-tools {
+  padding: 3px 0;
+  margin-top: 3px;
+  border-top: 3px solid #e9ebee;
+}
+.post-actions .vote-box {
+  margin-right: 5px;
+}
+.post-item .post-actions .vote-button {
+  margin: 0 3px;
+}

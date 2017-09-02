@@ -10,7 +10,7 @@ class Vote extends Component {
     return (
       <div className="vote-box">
         <span className="vote-button" onClick={() => {postVote(postId,"upVote")}}><ThumbsUpIcon /></span>
-        <span className="vote-butoon" onClick={() => {postVote(postId,"downVote")}}><ThumbsDownIcon /></span>
+        <span className="vote-button" onClick={() => {postVote(postId,"downVote")}}><ThumbsDownIcon /></span>
       </div>
     )
   }
