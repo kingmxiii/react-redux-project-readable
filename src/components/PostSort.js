@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { DropdownButton, MenuItem } from 'react-bootstrap'
+import { sortPost } from '../actions'
 
-export default class PostSort extends Component {
+class PostSort extends Component {
   render(){
     const sortOptions = [
       {sortKey:'voteScore', sortOrder:'desc'},
@@ -26,3 +27,5 @@ export default class PostSort extends Component {
   )
   }
 }
+
+export default connect(null,{ sortPost })(PostSort)
