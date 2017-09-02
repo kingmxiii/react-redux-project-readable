@@ -8,6 +8,7 @@ import CategoryView from './CategoryView'
 import PostDetails from './PostDetails'
 import PostForm from './PostForm'
 import '../App.css'
+import _ from 'lodash'
 
 
 class App extends Component {
@@ -45,8 +46,10 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ posts, categories, comments }) {
-  return{ posts, categories }
+function mapStateToProps({ posts, categories, comments, appSettings }) {
+  return{
+    posts: _.mapKeys(_.orderBy(posts, appSettings.sortKey, appSettings.sortOrder), 'id'),
+    categories }
 }
 
 export default connect(mapStateToProps, actions)(App);
