@@ -79,11 +79,9 @@ export function deletePost(id){
 }
 
 export function sortPost(criteria){
-  const { sortKey, sortOrder } = criteria
   return {
     type: UPDATE_POST_SORT,
-    sortKey,
-    sortOrder
+    criteria
   }
 }
 
