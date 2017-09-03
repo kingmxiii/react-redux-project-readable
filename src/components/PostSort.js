@@ -12,7 +12,7 @@ class PostSort extends Component {
       {sortKey:'timestamp', sortOrder:'asc'}
     ]
     return(
-        <DropdownButton bsStyle="default" title="Sort By" id="post-sort-dropdown" onSelect={ (eventKey, event) => {
+        <DropdownButton bsStyle="default" title="Sort By" pullRight id="post-sort-dropdown" onSelect={ (eventKey, event) => {
           event.preventDefault()
           this.props.sortPost(sortOptions[eventKey])
         }}>
