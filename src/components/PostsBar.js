@@ -8,7 +8,7 @@ export default function PostsBar(props){
     <div className="posts-bar">
       <ButtonGroup>
         <LinkContainer to="/post/action/add">
-          <Button>New Post</Button>
+          <Button bsStyle="primary">New Post</Button>
         </LinkContainer>
         <PostSort/>
       </ButtonGroup>
