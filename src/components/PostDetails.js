@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchPost, fetchComments } from '../actions'
+import { fetchPost, fetchComments, deletePost } from '../actions'
 import _ from 'lodash'
 import Vote from './Vote'
 import PostMenu from './PostMenu'
@@ -12,7 +12,7 @@ class PostDetails extends Component {
     this.props.fetchComments(post_id)
   }
   render(){
-    const { post, postComments } = this.props
+    const { post, postComments, deletePost } = this.props
     if(!post) {
       return <div>Loading...</div>;
     }
@@ -20,7 +20,7 @@ class PostDetails extends Component {
 
       <div className="post-content">
         <div className="post-handle">
-          <PostMenu post={post} />
+          <PostMenu post={post} deletePost={deletePost} />
         </div>
         <h2 className="post-title">{post.title}</h2>
         <div className="post-toolbar">
@@ -57,4 +57,4 @@ function mapStateToProps({posts, comments }, ownProps) {
     }
 }
 
-export default connect(mapStateToProps, { fetchPost, fetchComments })(PostDetails)
+export default connect(mapStateToProps, { fetchPost, fetchComments, deletePost })(PostDetails)
