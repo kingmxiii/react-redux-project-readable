@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchPost, fetchComments } from '../actions'
 import _ from 'lodash'
 import Vote from './Vote'
+import PostMenu from './PostMenu'
 
 class PostDetails extends Component {
   componentDidMount() {
@@ -18,6 +19,9 @@ class PostDetails extends Component {
     return(
 
       <div className="post-content">
+        <div className="post-handle">
+          <PostMenu post={post} />
+        </div>
         <h2 className="post-title">{post.title}</h2>
         <div className="post-toolbar">
           <Vote postId={post.id}/>
