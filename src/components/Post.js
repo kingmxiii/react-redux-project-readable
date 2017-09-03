@@ -1,26 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { DropdownButton, MenuItem } from 'react-bootstrap'
 import Vote from './Vote'
-import { LinkContainer } from 'react-router-bootstrap'
+import PostMenu from './PostMenu'
 import Moment from 'react-moment'
-
 export default function Post(props){
   const { post, comments, deletePost } = props
   return (
     <div className="post-item">
       <div className="post-handle row">
-        <div className="post-menu pull-right">
-          <DropdownButton bsStyle="default" title="..." noCaret id="dropdown-no-caret">
-            <LinkContainer to={`/${post.category}/${post.id}`} >
-              <MenuItem eventKey="1">View</MenuItem>
-            </LinkContainer>
-            <LinkContainer to={`/post/action/edit/${post.id}`}>
-              <MenuItem eventKey="2">Edit</MenuItem>
-            </LinkContainer>
-            <MenuItem eventKey="3">  <span onClick={ () =>{ deletePost(post.id) }} >Delete</span></MenuItem>
-          </DropdownButton>
-        </div>
+        <PostMenu post={post} deletePost={deletePost}/>
       </div>
       <div className="post-header row">
         <div className="post-title">
