@@ -12,8 +12,6 @@ class PostSort extends Component {
       {sortKey:'timestamp', sortOrder:'asc'}
     ]
     return(
-    <div className="post-sort">
-      <span>
         <DropdownButton bsStyle="default" title="Sort By" id="post-sort-dropdown" onSelect={ (eventKey, event) => {
           event.preventDefault()
           this.props.sortPost(sortOptions[eventKey])
@@ -23,8 +21,6 @@ class PostSort extends Component {
           <MenuItem eventKey={2}>Newest Post</MenuItem>
           <MenuItem eventKey={3}>Older Post</MenuItem>
         </DropdownButton>
-      </span>
-    </div>
   )
   }
 }
