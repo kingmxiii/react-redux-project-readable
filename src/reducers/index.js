@@ -20,7 +20,7 @@ export const initialSettings = {
 export function appSettings(state = initialSettings, action){
   switch(action.type){
     case UPDATE_POST_SORT:
-      return = { ...state, 'posts': action.criteria }
+      return { ...state, 'posts': action.criteria }
     default:
       return state
   }
