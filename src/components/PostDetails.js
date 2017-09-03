@@ -18,7 +18,7 @@ class PostDetails extends Component {
     return(
 
       <div className="post-content">
-        <h1 className="post-title">{post.title}</h1>
+        <h2 className="post-title">{post.title}</h2>
         <div className="post-toolbar">
           <Vote postId={post.id}/>
         </div>

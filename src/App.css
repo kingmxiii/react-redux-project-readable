@@ -48,3 +48,12 @@ body {
 .post-item .post-actions .vote-button {
   margin: 0 3px;
 }
+
+/* Post Details */
+
+.post-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
