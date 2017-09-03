@@ -18,22 +18,24 @@ class PostDetails extends Component {
     }
     return(
 
-      <div className="post-content">
-        <div className="post-handle">
+      <div className="post-details-content">
+        <div className="post-details-handle">
           <PostMenu post={post} deletePost={deletePost} view="detail" />
         </div>
-        <h2 className="post-title">{post.title}</h2>
-        <div className="post-toolbar">
+        <div className="post-details-header">
+          <h2 className="post-details-title">{post.title}</h2>
+        </div>
+        <div className="post-details-toolbar">
           <Vote postId={post.id}/>
         </div>
-        <div className="post-body">
+        <div className="post-details-body">
           <p className="post-body-text">{post.body}</p>
         </div>
-        <div className="post-info">
+        <div className="post-details-info">
           <span className="post-author">{post.author}</span>
           <span className="post-date">{post.date}</span>
         </div>
-        <div className="post-comments">
+        <div className="post-details-comments">
           <h3>Comments</h3>
           {_.map(postComments,(comment) => {
             return (
