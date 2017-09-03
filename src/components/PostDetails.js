@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchPost, fetchComments, deletePost } from '../actions'
+import  Moment from 'react-moment'
+import 'moment-timezone';
 import _ from 'lodash'
 import Vote from './Vote'
 import PostMenu from './PostMenu'
+
 
 class PostDetails extends Component {
   componentDidMount() {
@@ -16,19 +19,23 @@ class PostDetails extends Component {
     if(!post) {
       return <div>Loading...</div>;
     }
+    const postTime = new Date(post.timestamp);
     return(
 
       <div className="post-details-content">
-        <div className="post-details-handle">
+        <div className="post-details-handle row">
           <PostMenu post={post} deletePost={deletePost} view="detail" />
         </div>
-        <div className="post-details-header">
+        <div className="post-details-header row">
           <h2 className="post-details-title">{post.title}</h2>
+          <span className="post-time">
+            <Moment tz="America/New_York">{postTime.toUTCString()}</Moment>
+          </span>
         </div>
         <div className="post-details-toolbar">
           <Vote postId={post.id}/>
         </div>
-        <div className="post-details-body">
+        <div className="post-details-body row">
           <p className="post-body-text">{post.body}</p>
         </div>
         <div className="post-details-info">
