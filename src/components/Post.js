@@ -8,7 +8,7 @@ export default function Post(props){
   return (
     <div className="post-item">
       <div className="post-handle row">
-        <PostMenu post={post} deletePost={deletePost}/>
+        <PostMenu post={post} deletePost={deletePost} view="list"/>
       </div>
       <div className="post-header row">
         <div className="post-title">

@@ -20,7 +20,7 @@ class PostDetails extends Component {
 
       <div className="post-content">
         <div className="post-handle">
-          <PostMenu post={post} deletePost={deletePost} />
+          <PostMenu post={post} deletePost={deletePost} view="detail" />
         </div>
         <h2 className="post-title">{post.title}</h2>
         <div className="post-toolbar">
