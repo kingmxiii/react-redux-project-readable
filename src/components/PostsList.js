@@ -16,15 +16,18 @@ class PostList extends Component {
     const { posts, comments, fetchComments, deletePost, history } = this.props
     return(
       <div className="posts-list">
-        <PostsBar/>
-         { _.map(posts, post => {
-           if (comments[post.id] === undefined){
+        <div className="post-list-bar">
+          <PostsBar/>
+        </div>
+        <div className="post-list-content">
+          { _.map(posts, post => {
+            if (comments[post.id] === undefined){
               fetchComments(post.id)
-           }
-          const noComments = _.size(comments[post.id])
-
+            }
+            const noComments = _.size(comments[post.id])
             return <Post key={post.id} post={post} comments={noComments} deletePost={deletePost}/>
-        })}
+          })}
+        </div>
       </div>
     )
   }
