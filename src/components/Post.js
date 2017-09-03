@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Vote from './Vote'
+import PostStats from './PostStats'
 import PostMenu from './PostMenu'
 import Moment from 'react-moment'
 export default function Post(props){
@@ -25,16 +25,7 @@ export default function Post(props){
         </div>
 
       </div>
-      <div className="row post-tools">
-        <div className="post-actions pull-left">
-          <Vote postId={post.id} />
-        </div>
-        <div className="post-stats pull-left">
-            <span>Score: {post.voteScore} </span>
-            <span>Comments: { comments } </span>
-        </div>
-
-      </div>
+      <PostStats post={post} comments={comments}/>
     </div>
   )
 }
