@@ -7,7 +7,7 @@ export default function PostsBar(props){
   return(
     <div className="posts-bar">
       <ButtonGroup>
-        <LinkContainer to="/post/action/add">
+        <LinkContainer to="/post/action/new">
           <Button bsStyle="primary">New Post</Button>
         </LinkContainer>
         <PostSort/>
