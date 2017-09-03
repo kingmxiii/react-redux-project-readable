@@ -4,7 +4,7 @@ import { fetchPost, fetchComments, deletePost } from '../actions'
 import  Moment from 'react-moment'
 import 'moment-timezone';
 import _ from 'lodash'
-import Vote from './Vote'
+import PostStats from './PostStats'
 import PostMenu from './PostMenu'
 
 
@@ -31,19 +31,16 @@ class PostDetails extends Component {
           <span className="post-time">
             <Moment tz="America/New_York">{postTime.toUTCString()}</Moment>
           </span>
-        </div>
-        <div className="post-details-toolbar">
-          <Vote postId={post.id}/>
+          <span className="post-author">
+            By: {post.author}
+          </span>
         </div>
         <div className="post-details-body row">
           <p className="post-body-text">{post.body}</p>
         </div>
-        <div className="post-details-info">
-          <span className="post-author">{post.author}</span>
-          <span className="post-date">{post.date}</span>
-        </div>
+        <PostStats post={post} comments={_.size(postComments)}/>
         <div className="post-details-comments">
-          <h3>Comments</h3>
+          <h4>Comments</h4>
           {_.map(postComments,(comment) => {
             return (
               <div key={comment.id} className="comemnt-item">
