@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import _ from 'lodash'
+import Comment from './Comment'
 
 class CommentList extends Component{
   render() {
@@ -10,10 +11,7 @@ class CommentList extends Component{
         <h4>Comments</h4>
         {_.map(postComments,(comment) => {
           return (
-            <div key={comment.id} className="comemnt-item">
-              <span className="comment-author">{comment.author}: </span>
-              <span className="comment-body">{comment.body}</span>
-            </div>
+            <Comment key={comment.id} comment={comment} />
           )
         })}
       </div>
