@@ -6,6 +6,7 @@ import 'moment-timezone';
 import _ from 'lodash'
 import PostStats from './PostStats'
 import PostMenu from './PostMenu'
+import CommentList from './CommentList'
 
 
 class PostDetails extends Component {
@@ -39,17 +40,7 @@ class PostDetails extends Component {
           <p className="post-body-text">{post.body}</p>
         </div>
         <PostStats post={post} comments={_.size(postComments)}/>
-        <div className="post-details-comments">
-          <h4>Comments</h4>
-          {_.map(postComments,(comment) => {
-            return (
-              <div key={comment.id} className="comemnt-item">
-                <p className="comment-body">{comment.body}</p>
-                <span className="comment-author">{comment.author}</span>
-              </div>
-            )
-          })}
-        </div>
+        <CommentList postId={post.id} />
       </div>
     )
   }
