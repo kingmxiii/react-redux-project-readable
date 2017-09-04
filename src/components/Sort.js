@@ -35,4 +35,4 @@ class PostSort extends Component {
   }
 }
 
-export default connect(null,{ sortPost })(PostSort)
+export default connect(null,{ sortPost, sortComments })(PostSort)
