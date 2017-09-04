@@ -68,6 +68,14 @@ body {
   margin-bottom: 5px !important;
 }
 
+.post-details-header {
+    border-bottom: 3px double #e9ebee;
+}
 .post-details-content .btn-default {
   border:none;
+}
+
+.post-details-body {
+  padding: 10px 2px;
+  font-size: 20px;
 }
