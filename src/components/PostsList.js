@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { fetchComments, deletePost } from '../actions'
 import _ from 'lodash'
 import Post from './Post'
-import PostsBar from './PostsBar'
+import MenuBar from './MenuBar'
 
 class PostList extends Component {
 
@@ -17,7 +17,7 @@ class PostList extends Component {
     return(
       <div className="posts-list">
         <div className="post-list-bar">
-          <PostsBar/>
+          <MenuBar/>
         </div>
         <div className="post-list-content">
           { _.map(posts, post => {
