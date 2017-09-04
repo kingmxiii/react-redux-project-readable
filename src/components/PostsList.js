@@ -17,7 +17,7 @@ class PostList extends Component {
     return(
       <div className="posts-list">
         <div className="post-list-bar">
-          <MenuBar/>
+          <MenuBar entity="posts"/>
         </div>
         <div className="post-list-content">
           { _.map(posts, post => {
