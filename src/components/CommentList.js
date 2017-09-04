@@ -2,13 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 import Comment from './Comment'
+import Menubar from './MenuBar'
 
 class CommentList extends Component{
   render() {
     const { postComments } = this.props
     return(
       <div className="post-details-comments">
-        <h4>Comments</h4>
+        <div className="comments-header">
+          <div className="comments-title">
+            <h4>Comments</h4>
+          </div>
+          <Menubar entity="comments"/>
+        </div>
         {_.map(postComments,(comment) => {
           return (
             <Comment key={comment.id} comment={comment} />
@@ -19,9 +25,9 @@ class CommentList extends Component{
   }
 }
 
-function mapStateToProps({comments}, ownProps){
+function mapStateToProps({comments, appSettings}, ownProps){
   return {
-    postComments: comments[ownProps.postId]
+    postComments: _.mapKeys(_.orderBy(comments[ownProps.postId], appSettings.comments.sortKey, appSettings.comments.sortOrder), 'id')
   }
 }
 
