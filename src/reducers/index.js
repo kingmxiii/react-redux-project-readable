@@ -16,7 +16,8 @@ import {
 
 export const initialSettings = {
   posts: { sortKey: "voteScore", sortOrder: "desc"},
-  comments: { sortKey: "voteScore", sortOrder: "desc"}
+  comments: { sortKey: "voteScore", sortOrder: "desc"},
+  commentModal: {isOpen: false, mode:"new"}
 }
 
 export function appSettings(state = initialSettings, action){
