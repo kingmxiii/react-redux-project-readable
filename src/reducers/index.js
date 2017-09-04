@@ -14,7 +14,8 @@ import {
 } from '../actions'
 
 export const initialSettings = {
-  posts: { sortKey: "voteScore", sortOrder: "desc"}
+  posts: { sortKey: "voteScore", sortOrder: "desc"},
+  comments: { sortKey: "voteScore", sortOrder: "desc"}
 }
 
 export function appSettings(state = initialSettings, action){
