@@ -9,6 +9,7 @@ export const FETCH_COMMENTS = 'FETCH_COMMENTS'
 export const POST_VOTE = 'POST_VOTE'
 export const UPDATE_POST = 'UPDATE_POST'
 export const DELETE_POST = 'DELETE_POST'
+export const SORT_COMMENTS = 'SORT_COMMENTS'
 
 const ROOT_URL = 'http://localhost:5001'
 const  headers = { Authorization: 'reypolanco' }
@@ -93,6 +94,14 @@ export function fetchComments(postId){
       })
     }
 }
+
+export function sortComments(criteria){
+  return {
+    type: SORT_COMMENTS,
+    criteria
+  }
+}
+
 
 export function fetchCategories(){
   const request = axios.get(`${ROOT_URL}/categories`, { headers })
