@@ -1,9 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { DropdownButton, MenuItem } from 'react-bootstrap'
-import { sortPost } from '../actions'
+import { sortPost, sortComments } from '../actions'
 
 class PostSort extends Component {
+  sortEntity(settings){
+      const { entity, sortPost, sortComments } = this.props
+      if(entity === "posts"){
+        sortPost(settings)
+      }
+      else {
+        sortComments(settings)
+      }
+  }
+
   render(){
     const sortOptions = [
       {sortKey:'voteScore', sortOrder:'desc'},
@@ -14,7 +24,7 @@ class PostSort extends Component {
     return(
         <DropdownButton bsStyle="default" title="Sort By" pullRight id="post-sort-dropdown" onSelect={ (eventKey, event) => {
           event.preventDefault()
-          this.props.sortPost(sortOptions[eventKey])
+          this.sortEntity(sortOptions[eventKey])
         }}>
           <MenuItem eventKey={0}>Higher Votes</MenuItem>
           <MenuItem eventKey={1}>Lower Votes</MenuItem>
