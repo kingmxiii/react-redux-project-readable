@@ -1,7 +1,7 @@
 import React from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import { ButtonGroup, Button } from 'react-bootstrap'
-import PostSort from './PostSort'
+import Sort from './Sort'
 
 export default function PostsBar(props){
   return(
@@ -10,7 +10,7 @@ export default function PostsBar(props){
         <LinkContainer to="/post/action/new">
           <Button bsStyle="primary">New Post</Button>
         </LinkContainer>
-        <PostSort/>
+        <Sort/>
       </ButtonGroup>
     </div>
   )
