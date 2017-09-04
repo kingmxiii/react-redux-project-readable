@@ -1,7 +1,7 @@
 import React from 'react'
 import Vote from './Vote'
 
-export default function Post(props){
+export default function PostStats(props){
   const { post, comments } = props
   return(
     <div className="row post-tools">
