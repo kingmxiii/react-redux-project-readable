@@ -46,11 +46,12 @@ class PostDetails extends Component {
   }
 }
 
-function mapStateToProps({posts, comments }, ownProps) {
+function mapStateToProps({posts, comments, appSettings }, ownProps) {
   const { post_id } = ownProps.match.params
   return {
           post: posts[post_id],
-          postComments : comments[post_id]
+          postComments : _.mapKeys(_.orderBy(comments[post_id], appSettings.comments.sortKey, appSettings.comments.sortOrder), 'id'),
+          appSettings
     }
 }
 
