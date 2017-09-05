@@ -11,13 +11,15 @@ import {
   UPDATE_POST,
   DELETE_POST,
   UPDATE_POST_SORT,
-  SORT_COMMENTS
+  SORT_COMMENTS,
+  CREATE_COMMENT,
+  UPDATE_COMMENT
 } from '../actions'
 
 export const initialSettings = {
   posts: { sortKey: "voteScore", sortOrder: "desc"},
   comments: { sortKey: "voteScore", sortOrder: "desc"},
-  commentModal: {isOpen: false, mode:"new"}
+  commentModal: {isOpen: false, mode:'new', commentId:'0'}
 }
 
 export function appSettings(state = initialSettings, action){
@@ -65,6 +67,10 @@ export function comments(state = {}, action){
   switch(action.type){
     case FETCH_COMMENTS:
      return {...state, [action.postId] : _.mapKeys(action.payload, 'id')}
+     case CREATE_COMMENT:
+       return { ...state, [action.payload.id]: action.payload }
+     case UPDATE_COMMENT:
+       return { ...state, [action.payload.id]: action.payload }
     default: return state;
   }
 
