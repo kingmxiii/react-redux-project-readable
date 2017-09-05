@@ -10,7 +10,8 @@ export const POST_VOTE = 'POST_VOTE'
 export const UPDATE_POST = 'UPDATE_POST'
 export const DELETE_POST = 'DELETE_POST'
 export const SORT_COMMENTS = 'SORT_COMMENTS',
-export const CREATE_COMMENT = 'CREATE_COMMENT'
+export const CREATE_COMMENT = 'CREATE_COMMENT',
+export const UPDATE_COMMENT = 'UPDATE_COMMENT'
 
 const ROOT_URL = 'http://localhost:5001'
 const  headers = { Authorization: 'reypolanco' }
@@ -107,6 +108,22 @@ export function createComment(values, callback){
   return (dispatch) => {
     request.then(({ data }) => {
       dispatch({ type: CREATE_COMMENT, payload: data })
+      callback()
+    })
+  }
+}
+
+export function updateComment(id,values, callback){
+  const request = axios({
+    url: `${ROOT_URL}/comments/${id}`,
+    method : 'put',
+    headers,
+    data: values
+  }
+)
+  return (dispatch) => {
+    request.then(({ data }) => {
+      dispatch({ type: UPDATE_COMMENT, payload: data })
       callback()
     })
   }
