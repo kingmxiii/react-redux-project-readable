@@ -9,7 +9,8 @@ export const FETCH_COMMENTS = 'FETCH_COMMENTS'
 export const POST_VOTE = 'POST_VOTE'
 export const UPDATE_POST = 'UPDATE_POST'
 export const DELETE_POST = 'DELETE_POST'
-export const SORT_COMMENTS = 'SORT_COMMENTS'
+export const SORT_COMMENTS = 'SORT_COMMENTS',
+export const CREATE_COMMENT = 'CREATE_COMMENT'
 
 const ROOT_URL = 'http://localhost:5001'
 const  headers = { Authorization: 'reypolanco' }
@@ -93,6 +94,22 @@ export function fetchComments(postId){
         dispatch({ type: FETCH_COMMENTS, payload: data, postId })
       })
     }
+}
+
+export function createComment(values, callback){
+  const request = axios({
+    url: `${ROOT_URL}/comments`,
+    method : 'post',
+    headers,
+    data: values
+  }
+)
+  return (dispatch) => {
+    request.then(({ data }) => {
+      dispatch({ type: CREATE_COMMENT, payload: data })
+      callback()
+    })
+  }
 }
 
 export function sortComments(criteria){
