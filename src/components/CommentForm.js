@@ -74,9 +74,8 @@ class CommentForm extends Component {
   }
 }
 
-function mapStateToProps({ comments, form, appSettings }, ownProps){
-  const { parentId } = ownProps
-  const { commentId } = appSettings.commentModal
+function mapStateToProps({ comments, form, appSettings }){
+  const { commentId, parentId } = appSettings.commentModal
   return{
     comment: comments[parentId][commentId],
     form
