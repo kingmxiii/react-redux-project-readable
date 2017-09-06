@@ -9,8 +9,8 @@ export const FETCH_COMMENTS = 'FETCH_COMMENTS'
 export const POST_VOTE = 'POST_VOTE'
 export const UPDATE_POST = 'UPDATE_POST'
 export const DELETE_POST = 'DELETE_POST'
-export const SORT_COMMENTS = 'SORT_COMMENTS',
-export const CREATE_COMMENT = 'CREATE_COMMENT',
+export const SORT_COMMENTS = 'SORT_COMMENTS'
+export const CREATE_COMMENT = 'CREATE_COMMENT'
 export const UPDATE_COMMENT = 'UPDATE_COMMENT'
 
 const ROOT_URL = 'http://localhost:5001'
