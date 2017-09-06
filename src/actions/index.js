@@ -167,7 +167,7 @@ export function openModal(mode,commentId,parentId){
   return {
     type: OPEN_MODAL,
     payload: {
-      isOpen = true,
+      isOpen: true,
       mode,
       commentId,
       parentId
@@ -179,9 +179,10 @@ export function closeModal(){
   return {
     type: CLOSE_MODAL,
     payload: {
-      isOpen = false,
+      isOpen: false,
       mode: null,
       commentId: null,
       parentId: null
     }
   }
+}
