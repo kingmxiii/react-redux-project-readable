@@ -45,10 +45,8 @@ class CommentForm extends Component {
     }
   }
   render(){
-    const  { categories, handleSubmit } = this.props
-    const { mode } = this.props.match.params
+    const  { handleSubmit } = this.props
     return (
-
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <div>
             <Field
