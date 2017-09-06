@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Modal from 'react-modal'
 import _ from 'lodash'
 import Comment from './Comment'
 import Menubar from './MenuBar'
+import CommentForm from './CommentForm'
 
 class CommentList extends Component{
   render() {
-    const { postComments } = this.props
+    const { postComments, postId, appSettings } = this.props
     return(
       <div className="post-details-comments">
         <div className="comments-header">
@@ -20,6 +22,16 @@ class CommentList extends Component{
             <Comment key={comment.id} comment={comment} />
           )
         })}
+        <Modal
+          className='modal'
+          overlayClassName='overlay'
+          isOpen={appSettings.commentModal.isOpen}
+          onRequestClose={closeModal}
+          contentLabel="New Comment"
+        >
+          <CommentForm parentId={postId}/>
+        </Modal>
+
       </div>
     )
   }
@@ -27,7 +39,8 @@ class CommentList extends Component{
 
 function mapStateToProps({comments, appSettings}, ownProps){
   return {
-    postComments: _.mapKeys(_.orderBy(comments[ownProps.postId], appSettings.comments.sortKey, appSettings.comments.sortOrder), 'id')
+    postComments: _.mapKeys(_.orderBy(comments[ownProps.postId], appSettings.comments.sortKey, appSettings.comments.sortOrder), 'id'),
+    appSettings
   }
 }
 
