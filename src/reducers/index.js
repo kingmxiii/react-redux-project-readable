@@ -14,7 +14,8 @@ import {
   SORT_COMMENTS,
   CREATE_COMMENT,
   UPDATE_COMMENT,
-  OPEN_MODAL
+  OPEN_MODAL,
+  CLOSE_MODAL
 } from '../actions'
 
 export const initialSettings = {
@@ -30,6 +31,8 @@ export function appSettings(state = initialSettings, action){
     case SORT_COMMENTS:
         return { ...state, 'comments': action.criteria }
     case OPEN_MODAL:
+        return { ...state, 'commentModal':action.payload }
+    case CLOSE_MODAL:
         return { ...state, 'commentModal':action.payload }
     default:
       return state

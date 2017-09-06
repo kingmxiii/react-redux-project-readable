@@ -13,6 +13,7 @@ export const SORT_COMMENTS = 'SORT_COMMENTS'
 export const CREATE_COMMENT = 'CREATE_COMMENT'
 export const UPDATE_COMMENT = 'UPDATE_COMMENT'
 export const OPEN_MODAL = 'OPEN_MODAL'
+export const CLOSE_MODAL = 'CLOSE_MODAL'
 
 const ROOT_URL = 'http://localhost:5001'
 const  headers = { Authorization: 'reypolanco' }
@@ -173,3 +174,14 @@ export function openModal(mode,commentId,parentId){
     }
   }
 }
+
+export function closeModal(){
+  return {
+    type: CLOSE_MODAL,
+    payload: {
+      isOpen = false,
+      mode: null,
+      commentId: null,
+      parentId: null
+    }
+  }
