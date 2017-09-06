@@ -9,14 +9,18 @@ import { openModal, closeModal } from '../actions'
 
 class CommentList extends Component{
   render() {
-    const { postComments, postId, appSettings } = this.props
+    const { postComments, postId ,appSettings, openModal, closeModal } = this.props
     return(
       <div className="post-details-comments">
         <div className="comments-header">
           <div className="comments-title">
             <h4>Comments</h4>
           </div>
-          <Menubar entity="comments"/>
+          <Menubar
+            entity="comments"
+            onNewClick={openModal}
+            parentId={postId}
+          />
         </div>
         {_.map(postComments,(comment) => {
           return (
@@ -24,11 +28,11 @@ class CommentList extends Component{
           )
         })}
         <Modal
-          className='modal'
+          className='comment-modal'
           overlayClassName='overlay'
           isOpen={appSettings.commentModal.isOpen}
           onRequestClose={closeModal}
-          contentLabel="New Comment"
+          contentLabel='New Comment'
         >
           <CommentForm />
         </Modal>
