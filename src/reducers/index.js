@@ -13,13 +13,14 @@ import {
   UPDATE_POST_SORT,
   SORT_COMMENTS,
   CREATE_COMMENT,
-  UPDATE_COMMENT
+  UPDATE_COMMENT,
+  OPEN_MODAL
 } from '../actions'
 
 export const initialSettings = {
   posts: { sortKey: "voteScore", sortOrder: "desc"},
   comments: { sortKey: "voteScore", sortOrder: "desc"},
-  commentModal: {isOpen: false, mode:'new', commentId:'0'}
+  commentModal: {isOpen: false, mode:null, commentId:null, parentId:null}
 }
 
 export function appSettings(state = initialSettings, action){
@@ -28,6 +29,8 @@ export function appSettings(state = initialSettings, action){
       return { ...state, 'posts': action.criteria }
     case SORT_COMMENTS:
         return { ...state, 'comments': action.criteria }
+    case OPEN_MODAL:
+        return { ...state, 'commentModal':action.payload }
     default:
       return state
   }
@@ -83,5 +86,6 @@ export function comments(state = {}, action){
   }
 
 }
+
 
 export default combineReducers({posts, categories, comments, form, appSettings})
