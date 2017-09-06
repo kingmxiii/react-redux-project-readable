@@ -5,6 +5,7 @@ import _ from 'lodash'
 import Comment from './Comment'
 import Menubar from './MenuBar'
 import CommentForm from './CommentForm'
+import { openModal, closeModal } from '../actions'
 
 class CommentList extends Component{
   render() {
@@ -44,4 +45,4 @@ function mapStateToProps({comments, appSettings}, ownProps){
   }
 }
 
-export default connect(mapStateToProps)(CommentList)
+export default connect(mapStateToProps, { openModal, closeModal })(CommentList)
