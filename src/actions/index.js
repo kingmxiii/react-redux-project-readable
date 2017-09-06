@@ -12,6 +12,7 @@ export const DELETE_POST = 'DELETE_POST'
 export const SORT_COMMENTS = 'SORT_COMMENTS'
 export const CREATE_COMMENT = 'CREATE_COMMENT'
 export const UPDATE_COMMENT = 'UPDATE_COMMENT'
+export const OPEN_MODAL = 'OPEN_MODAL'
 
 const ROOT_URL = 'http://localhost:5001'
 const  headers = { Authorization: 'reypolanco' }
@@ -158,5 +159,17 @@ export function postVote(postId, option){
     request.then(({ data }) => {
       dispatch({ type: POST_VOTE, payload: data })
     })
+  }
+}
+
+export function openModal(mode,commentId,parentId){
+  return {
+    type: OPEN_MODAL,
+    payload: {
+      isOpen = true,
+      mode,
+      commentId,
+      parentId
+    }
   }
 }
