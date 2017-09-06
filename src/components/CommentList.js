@@ -29,7 +29,7 @@ class CommentList extends Component{
           onRequestClose={closeModal}
           contentLabel="New Comment"
         >
-          <CommentForm parentId={postId}/>
+          <CommentForm />
         </Modal>
 
       </div>
