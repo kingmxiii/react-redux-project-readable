@@ -6,12 +6,18 @@ import { openModal } from '../actions'
  class CommentStats extends Component {
 
   render(){
-    const { comment } = this. props
+    const { comment, openModal } = this. props
     const commentDate = new Date(comment.timestamp)
     return(
       <div className="row comment-tools">
         <div className="comment-actions pull-left">
-          <span className="pull-left">Edit</span>
+          <a className="pull-left" href="#"
+            onClick={(e) => {
+              e.preventDefault()
+              openModal('edit', comment.id, comment.parentId ) }}
+          >
+            Edit
+          </a>
           <span className="pull-left">
             <Vote postId={comment.id} />
           </span>
