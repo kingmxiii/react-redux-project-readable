@@ -24,7 +24,10 @@ class CommentList extends Component{
         </div>
         {_.map(postComments,(comment) => {
           return (
-            <Comment key={comment.id} comment={comment} />
+            <Comment
+              key={comment.id}
+              comment={comment}
+            />
           )
         })}
         <Modal
