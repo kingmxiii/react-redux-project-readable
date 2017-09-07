@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Field, reduxForm, initialize } from 'redux-form'
 import { connect } from 'react-redux'
-import { createComment, updateComment } from '../actions'
+import { createComment, updateComment, closeModal } from '../actions'
 
 class CommentForm extends Component {
 
@@ -45,7 +45,7 @@ class CommentForm extends Component {
     }
   }
   render(){
-    const  { handleSubmit } = this.props
+    const  { handleSubmit, closeModal } = this.props
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <div>
@@ -66,7 +66,7 @@ class CommentForm extends Component {
           </div>
 
       <button type="submit" className="btn btn-primary">Save</button>
-      <button className="btn btn-danger">Cancel</button>
+      <button className="btn btn-danger" onClick={()=>{ closeModal()}}>Cancel</button>
       </form>
   )
   }
@@ -84,5 +84,5 @@ export default reduxForm({
   form: 'CommentForm'
 }
 )(
-  connect(mapStateToProps, { createComment, updateComment })(CommentForm)
+  connect(mapStateToProps, { createComment, updateComment, closeModal })(CommentForm)
 );
