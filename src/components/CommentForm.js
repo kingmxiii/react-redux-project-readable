@@ -30,18 +30,20 @@ class CommentForm extends Component {
     </div>
   )
   onSubmit(values){
-    const { mode, id } = this.props.match.params
+    const { parentId, commentId, createComment, closeModal, mode } = this.props
     if(mode === 'new'){
       values.id = Date.now().toString()
       values.timestamp = Date.now()
-      this.props.createPost(values, () => {
-        this.props.history.push('/')
+      values.parentId = parentId
+      createComment(values, () => {
+        closeModal()
       })
     }
     else{
-      this.props.updatePost(id, values, () => {
+    /*  this.props.updatePost(id, values, () => {
         this.props.history.push('/')
-      })
+      })*/
+      console.log('Hello')
     }
   }
   render(){
@@ -73,10 +75,13 @@ class CommentForm extends Component {
 }
 
 function mapStateToProps({ comments, form, appSettings }){
-  const { commentId, parentId } = appSettings.commentModal
+  const { commentId, parentId, mode } = appSettings.commentModal
   return{
     comment: comments[parentId][commentId],
-    form
+    form,
+    commentId,
+    parentId,
+    mode
   }
 }
 
