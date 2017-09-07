@@ -77,13 +77,13 @@ export function comments(state = {}, action){
        return { ...state,
                 [action.payload.parentId]:{
                   ...state[action.payload.parentId],
-                  [action.payload.payload.id]:action.payload
+                  [action.payload.id]:action.payload
                 }}
      case UPDATE_COMMENT:
        return  { ...state,
                 [action.payload.parentId]:{
                   ...state[action.payload.parentId],
-                  [action.payload.payload.id]:action.payload
+                  [action.payload.id]:action.payload
                 }}
     default: return state;
   }
