@@ -47,17 +47,19 @@ class CommentForm extends Component {
     }
   }
   render(){
-    const  { handleSubmit, closeModal } = this.props
+    const  { handleSubmit, closeModal, mode } = this.props
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-          <div>
-            <Field
-            name="author"
-            label="Name"
-            component={this.renderField}
-            type="text"
-            />
-          </div>
+          { mode === 'new' &&
+            <div>
+              <Field
+                name="author"
+                label="Name"
+                component={this.renderField}
+                type="text"
+              /> 
+            </div>
+          }
           <div>
             <Field
             name="body"
