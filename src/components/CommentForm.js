@@ -30,7 +30,7 @@ class CommentForm extends Component {
     </div>
   )
   onSubmit(values){
-    const { parentId, commentId, createComment, closeModal, mode } = this.props
+    const { parentId, commentId, createComment, updateComment, closeModal, mode } = this.props
     if(mode === 'new'){
       values.id = Date.now().toString()
       values.timestamp = Date.now()
@@ -40,10 +40,9 @@ class CommentForm extends Component {
       })
     }
     else{
-    /*  this.props.updatePost(id, values, () => {
-        this.props.history.push('/')
-      })*/
-      console.log('Hello')
+      this.props.updateComment(commentId, values, () => {
+        closeModal()
+      })
     }
   }
   render(){
@@ -57,7 +56,7 @@ class CommentForm extends Component {
                 label="Name"
                 component={this.renderField}
                 type="text"
-              /> 
+              />
             </div>
           }
           <div>
