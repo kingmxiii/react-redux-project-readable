@@ -52,7 +52,7 @@ class CommentForm extends Component {
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <div>
             <Field
-            name="owner"
+            name="author"
             label="Name"
             component={this.renderField}
             type="text"
