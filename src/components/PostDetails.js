@@ -46,10 +46,11 @@ class PostDetails extends Component {
   }
 }
 
-function mapStateToProps({ posts }, ownProps) {
+function mapStateToProps({ posts, comments }, ownProps) {
   const { post_id } = ownProps.match.params
   return {
-          post: posts[post_id]
+          post: posts[post_id],
+          postComments: comments[post_id]
     }
 }
 
