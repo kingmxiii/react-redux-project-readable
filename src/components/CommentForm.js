@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Field, reduxForm, initialize } from 'redux-form'
+import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { createComment, updateComment, closeModal } from '../actions'
 
@@ -40,7 +40,7 @@ class CommentForm extends Component {
       })
     }
     else{
-      this.props.updateComment(commentId, values, () => {
+        updateComment(commentId, values, () => {
         closeModal()
       })
     }

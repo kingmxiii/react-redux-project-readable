@@ -13,7 +13,7 @@ class PostList extends Component {
 
   render(){
 
-    const { posts, comments, fetchComments, deletePost, history } = this.props
+    const { posts, comments, fetchComments, deletePost } = this.props
     return(
       <div className="posts-list">
         <div className="post-list-bar">

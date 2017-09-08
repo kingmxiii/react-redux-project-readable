@@ -1,6 +1,5 @@
 import React from 'react'
 import { Navbar, Nav , NavItem, NavDropdown } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
 import CategoriesList from './CategoriesList'
 
