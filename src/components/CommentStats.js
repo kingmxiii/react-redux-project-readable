@@ -1,23 +1,31 @@
 import React, { Component } from 'react'
 import Vote from './Vote'
 import { connect } from 'react-redux'
-import { openModal } from '../actions'
+import { openModal, deleteComment } from '../actions'
 
  class CommentStats extends Component {
 
   render(){
-    const { comment, openModal } = this. props
+    const { comment, openModal, deleteComment } = this.props
     const commentDate = new Date(comment.timestamp)
     return(
       <div className="row comment-tools">
         <div className="comment-actions pull-left">
-          <a className="pull-left" href="#"
+          <span className="pull-left"
             onClick={(e) => {
               e.preventDefault()
               openModal('edit', comment.id, comment.parentId ) }}
           >
             Edit
-          </a>
+          </span>
+          <span className="pull-left"
+             onClick={ (e) => {
+               e.preventDefault()
+               deleteComment(comment.id, comment.parentId)
+             }}
+          >
+          Delete
+         </span>
           <span className="pull-left">
             <Vote postId={comment.id} />
           </span>
@@ -31,4 +39,4 @@ import { openModal } from '../actions'
   }
 }
 
-export default connect(null, { openModal })(CommentStats)
+export default connect(null, { openModal, deleteComment })(CommentStats)
