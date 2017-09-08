@@ -15,6 +15,7 @@ import {
   CREATE_COMMENT,
   UPDATE_COMMENT,
   DELETE_COMMENT,
+  COMMENT_VOTE,
   OPEN_MODAL,
   CLOSE_MODAL
 } from '../actions'
@@ -86,10 +87,17 @@ export function comments(state = {}, action){
                   ...state[action.payload.parentId],
                   [action.payload.id]:action.payload
                 }}
+     case COMMENT_VOTE:
+        return  { ...state,
+                  [action.payload.parentId]:{
+                    ...state[action.payload.parentId],
+                    [action.payload.id]:action.payload
+                 }}
       case DELETE_COMMENT:
            const { id , parentId } = action.payload
            return _.omit(state[parentId], id )
       default: return state;
+
   }
 
 }
