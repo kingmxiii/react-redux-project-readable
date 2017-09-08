@@ -12,6 +12,7 @@ export const DELETE_POST = 'DELETE_POST'
 export const SORT_COMMENTS = 'SORT_COMMENTS'
 export const CREATE_COMMENT = 'CREATE_COMMENT'
 export const UPDATE_COMMENT = 'UPDATE_COMMENT'
+export const COMMENT_VOTE = 'COMMENT_VOTE'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
 export const OPEN_MODAL = 'OPEN_MODAL'
 export const CLOSE_MODAL = 'CLOSE_MODAL'
@@ -174,6 +175,21 @@ export function postVote(postId, option){
   return (dispatch) => {
     request.then(({ data }) => {
       dispatch({ type: POST_VOTE, payload: data })
+    })
+  }
+}
+
+export function commentVote(id, option){
+  const request = axios({
+    url: `${ROOT_URL}/comments/${id}`,
+    method : 'post',
+    headers,
+    data: { option }
+  }
+    )
+  return (dispatch) => {
+    request.then(({ data }) => {
+      dispatch({ type: COMMENT_VOTE, payload: data })
     })
   }
 }
