@@ -5,9 +5,9 @@ import CategoriesList from './CategoriesList'
 
 export default function AppMenu(props){
   return (
-    <Navbar inverse collapseOnSelect>
+    <Navbar collapseOnSelect className="app-navbar">
       <Navbar.Header>
-          <Navbar.Brand>
+          <Navbar.Brand className="app-navbar-brand">
             <span>My Readables</span>
           </Navbar.Brand>
           <Navbar.Toggle />

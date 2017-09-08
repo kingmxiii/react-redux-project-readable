@@ -1,7 +1,28 @@
 /* App */
 
 body {
-  background-color: #e9ebee;
+  background-color: #ffd9d6;
+}
+
+/* Navbar */
+.app-navbar {
+  background-color: #FF4136;
+}
+
+.app-navbar-brand {
+  color:white !important;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: white !important;
+}
+.navbar-default .navbar-nav>.active>a {
+  background-color: #cc342b !important;
+  color: white !important;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+  background-color: #cc342b !important;
 }
 /* Post List */
 .post-list-bar {
