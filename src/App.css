@@ -11,6 +11,8 @@ body {
 
 .app-navbar-brand {
   color:white !important;
+  font-family: 'Satisfy', cursive;
+  font-size: 24px;
 }
 
 .navbar-default .navbar-nav>li>a {
