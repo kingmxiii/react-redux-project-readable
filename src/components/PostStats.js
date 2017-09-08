@@ -6,7 +6,7 @@ export default function PostStats(props){
   return(
     <div className="row post-tools">
       <div className="post-actions pull-left">
-        <Vote postId={post.id} />
+        <Vote id={post.id} comp="post" />
       </div>
       <div className="post-stats pull-left">
           <span>Score: {post.voteScore} </span>

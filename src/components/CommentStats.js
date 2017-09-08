@@ -27,7 +27,7 @@ import { openModal, deleteComment } from '../actions'
           Delete
          </span>
           <span className="pull-left">
-            <Vote postId={comment.id} />
+            <Vote id={comment.id} comp="comment" />
           </span>
         </div>
         <div className="comment-stats pull-left">
