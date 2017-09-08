@@ -12,6 +12,7 @@ export const DELETE_POST = 'DELETE_POST'
 export const SORT_COMMENTS = 'SORT_COMMENTS'
 export const CREATE_COMMENT = 'CREATE_COMMENT'
 export const UPDATE_COMMENT = 'UPDATE_COMMENT'
+export const DELETE_COMMENT = 'DELETE_COMMENT'
 export const OPEN_MODAL = 'OPEN_MODAL'
 export const CLOSE_MODAL = 'CLOSE_MODAL'
 
@@ -127,6 +128,20 @@ export function updateComment(id,values, callback){
     request.then(({ data }) => {
       dispatch({ type: UPDATE_COMMENT, payload: data })
       callback()
+    })
+  }
+}
+
+export function deleteComment(id, parentId){
+  const request = axios({
+    url: `${ROOT_URL}/comments/${id}`,
+    method : 'delete',
+    headers
+  }
+)
+  return (dispatch) => {
+    request.then(({ data }) => {
+      dispatch({ type: DELETE_COMMENT, payload: { id, parentId } })
     })
   }
 }
