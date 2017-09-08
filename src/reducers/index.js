@@ -88,8 +88,8 @@ export function comments(state = {}, action){
                 }}
       case DELETE_COMMENT:
            const { id , parentId } = action.payload
-          return _.omit(state[parenId], id )
-    default: return state;
+           return _.omit(state[parentId], id )
+      default: return state;
   }
 
 }
