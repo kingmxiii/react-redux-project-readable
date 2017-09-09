@@ -1,5 +1,7 @@
 import React from 'react'
 import Vote from './Vote'
+import Dashboard from 'react-icons/lib/fa/dashboard'
+import Comments from 'react-icons/lib/fa/comments'
 
 export default function PostStats(props){
   const { post, comments } = props
@@ -9,8 +11,8 @@ export default function PostStats(props){
         <Vote id={post.id} comp="post" />
       </div>
       <div className="post-stats pull-left">
-          <span>Score: {post.voteScore} </span>
-          <span>Comments: { comments } </span>
+          <div className="pull-left"><span className="post-stats-icon"><Dashboard/></span> Score: {post.voteScore} </div>
+          <div className="pull-left"><span className="post-stats-icon"><Comments/></span> Comments: { comments } </div>
       </div>
     </div>
   )

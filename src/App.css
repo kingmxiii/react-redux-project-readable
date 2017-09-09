@@ -56,6 +56,8 @@ body {
 }
 
 .post-item h4 {
+  color: #cc342b;
+  font-size: 22px;
   margin-top: 5px !important;
   margin-bottom: 5px !important;
 }
@@ -68,8 +70,27 @@ body {
 .post-actions .vote-box {
   margin-right: 5px;
 }
+
+
+
 .post-item .post-actions .vote-button {
   margin: 0 3px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.post-stats-icon {
+  color: #cc342b !important;
+  font-size: 20px !important;
+}
+
+.post-stats {
+  font-size: 16px;
+  color: gray;
+}
+
+.post-stats div {
+  padding: 0 5px;
 }
 
 /* Post Details */

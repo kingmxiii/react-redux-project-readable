@@ -10,10 +10,10 @@ export default function MenuBar(props){
       <ButtonGroup>
         { props.entity === 'posts' ?
           <LinkContainer to="/post/action/new">
-          <Button bsStyle="primary">New Post</Button>
+          <Button bsStyle="warning">New Post</Button>
         </LinkContainer> :
           <Button
-            bsStyle="primary"
+            bsStyle="warning"
             onClick={() => {
             onNewClick('new', null, parentId)
           }}

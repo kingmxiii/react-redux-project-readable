@@ -17,8 +17,8 @@ class Vote extends Component {
   render(){
     return (
       <div className="vote-box">
-        <span className="vote-button" onClick={() => { this.vote("upVote")}}><ThumbsUpIcon /></span>
-        <span className="vote-button" onClick={() => { this.vote("downVote")}}><ThumbsDownIcon /></span>
+        <span className="vote-button text-success" onClick={() => { this.vote("upVote")}}><ThumbsUpIcon /></span>
+        <span className="vote-button text-danger" onClick={() => { this.vote("downVote")}}><ThumbsDownIcon /></span>
       </div>
     )
   }
