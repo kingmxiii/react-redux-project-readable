@@ -23,15 +23,19 @@ class PostForm extends Component {
 
   //Function to render fields dynamically
   //Code from redux-form documentation
-  renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
-    <div>
+  renderField = ({ input, label, type, meta: { touched, error, warning } }) => {
+    return (
+    <div className="form-group">
       <label>{label}</label>
-      <div>
-        <input {...input} placeholder={label} type={type}/>
-        {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
-      </div>
+      {(type === 'text') ?
+        <input {...input} placeholder={label} type={type} className="form-control" />
+      : <textarea {...input} placeholder={label} type={type} className="form-control" rows="5" ></textarea> }
+
+      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
     </div>
   )
+}
+
   onSubmit(values){
     const { mode, id } = this.props.match.params
     if(mode === 'new'){
@@ -67,12 +71,13 @@ class PostForm extends Component {
             label="Body"
             component={this.renderField}
             type="textarea"
+            rows="5"
             />
           </div>
           { (mode === "new") &&
           <div>
             <Field
-            name="owner"
+            name="author"
             label="Author"
             component={this.renderField}
             type="text"
@@ -99,12 +104,12 @@ class PostForm extends Component {
   }
 }
 
-function mapStateToProps({ posts, categories, formdata }, ownProps){
+function mapStateToProps({ posts, categories, form }, ownProps){
   const { id } = ownProps.match.params
   return{
     post: posts[id],
     categories,
-    form: formdata
+    form
   }
 }
 
