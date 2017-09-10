@@ -144,7 +144,6 @@ body {
   top: 40px;
   left: 200px;
   right: 200px;
-  bottom: 40px;
   border: 1px solid rgb(204, 204, 204);
   background: rgb(255, 255, 255);
   overflow: auto;
@@ -153,7 +152,6 @@ body {
   padding: 20px;
   border-radius: 3px;
   box-shadow: 0 3px 8px 0 rgba(0,0,0,.24), 0 3px 12px 0 rgba(0,0,0,.12);
-  min-width: 500px;
 }
 
 /*Post Details*/
@@ -225,6 +223,16 @@ body {
 .comment-action:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
+
+/* Comment Modal */
+  .modal-title {
+    color: #cc342b;
+  }
+
+  form h4 {
+    font-size: 16px !important;
+    color: #cc342b;
+  }
 
 /* Post Form */
 
