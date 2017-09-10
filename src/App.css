@@ -26,6 +26,15 @@ body {
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
   background-color: #cc342b !important;
 }
+
+.categories-menu {
+  padding: 0 10px;
+  text-transform: capitalize;
+}
+
+.categories-menu a {
+  color: #cc342b !important;
+}
 /* Post List */
 .post-list-bar {
   margin-bottom: 10px;
@@ -253,4 +262,11 @@ form button {
 
 .post-form-view h3 {
   color: #cc342b;
+}
+
+@media screen and (max-width: 767px){
+
+  .categories-menu a {
+    color: white !important;
+  }
 }
