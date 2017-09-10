@@ -41,6 +41,7 @@ class PostDetails extends Component {
           <p className="post-body-text">{post.body}</p>
         </div>
         <PostStats post={post} comments={_.size(postComments)}/>
+        <hr />
         <CommentList postId={post.id} />
       </div>
     )

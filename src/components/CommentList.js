@@ -12,24 +12,28 @@ class CommentList extends Component{
     const { postComments, postId ,appSettings, openModal, closeModal } = this.props
     return(
       <div className="post-details-comments">
-        <div className="comments-header">
-          <div className="comments-title">
+        <div className="comments-header row">
+          <div className="comments-title pull-left">
             <h4>Comments</h4>
           </div>
-          <Menubar
-            entity="comments"
-            onNewClick={openModal}
-            parentId={postId}
-          />
-        </div>
-        {_.map(postComments,(comment) => {
-          return (
-            <Comment
-              key={comment.id}
-              comment={comment}
+          <div className="comments-list-bar pull-right">
+            <Menubar
+              entity="comments"
+              onNewClick={openModal}
+              parentId={postId}
             />
-          )
-        })}
+          </div>
+        </div>
+        <div className="comment-list row">
+          {_.map(postComments,(comment) => {
+            return (
+              <Comment
+                key={comment.id}
+                comment={comment}
+              />
+            )
+          })}
+        </div>
         <Modal
           className='comment-modal'
           overlayClassName='overlay'

@@ -16,14 +16,14 @@ import Dashboard from 'react-icons/lib/fa/dashboard'
     return(
       <div className="row comment-tools">
         <div className="comment-actions pull-left">
-          <span className="pull-left"
+          <span className="comment-action pull-left"
             onClick={(e) => {
               e.preventDefault()
               openModal('edit', comment.id, comment.parentId ) }}
           >
             <Pencil /> Edit
           </span>
-          <span className="pull-left"
+          <span className="comment-action pull-left"
              onClick={ (e) => {
                e.preventDefault()
                deleteComment(comment.id, comment.parentId)
