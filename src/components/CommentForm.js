@@ -11,29 +11,31 @@ class CommentForm extends Component {
   }
 
   initForm(mode){
-    const { body } = this.props.comment
     let formData
     if(mode === 'edit') {
+      const { body } = this.props.comment
       formData = { body, mode }
     }
     else {
       formData = { mode }
     }
-    
+
     this.props.initialize(formData);
   }
 
   //Function to render fields dynamically
-  //Code from redux-form documentation
-  renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
-    <div>
-      <label>{label}</label>
-      <div>
-        <input {...input} placeholder={label} type={type}/>
-        {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+  renderField = ({ input, label, type, meta: { touched, error, warning } }) => {
+    const className = `form-group ${ touched && error ? 'has-error' : ''}`
+    return (
+      <div className={className}>
+        <label>{label}</label>
+        {(type === 'text') ?
+          <input {...input} placeholder={label} type={type} className="form-control" />
+          : <textarea {...input} placeholder={label} type={type} className="form-control" rows="5" ></textarea> }
+          {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
       </div>
-    </div>
-  )
+  )}
+
   onSubmit(values){
     const { parentId, commentId, createComment, updateComment, closeModal, mode } = this.props
     if(mode === 'new'){
@@ -55,23 +57,23 @@ class CommentForm extends Component {
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           { mode === 'new' &&
-            <div>
+
               <Field
                 name="author"
                 label="Name"
                 component={this.renderField}
                 type="text"
               />
-            </div>
+
           }
-          <div>
+
             <Field
             name="body"
             label="Comment"
             component={this.renderField}
             type="textarea"
             />
-          </div>
+
 
       <button type="submit" className="btn btn-primary">Save</button>
       <button className="btn btn-danger" onClick={()=>{ closeModal()}}>Cancel</button>
