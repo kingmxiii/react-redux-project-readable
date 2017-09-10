@@ -55,7 +55,7 @@ class CommentForm extends Component {
     }
   }
   render(){
-    const  { handleSubmit, closeModal, mode } = this.props
+    const  { handleSubmit, closeModal, mode, pristine, submitting } = this.props
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           { mode === 'new' &&
@@ -77,7 +77,7 @@ class CommentForm extends Component {
             />
 
 
-      <button type="submit" className="btn btn-primary">Save</button>
+      <button type="submit" className="btn btn-primary" disabled={ pristine || submitting }>Save</button>
       <button className="btn btn-danger" onClick={()=>{ closeModal()}}>Cancel</button>
       </form>
   )
