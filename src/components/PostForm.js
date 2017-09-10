@@ -61,7 +61,10 @@ renderSelect = ({ input, label, meta: { touched, error, warning } }) => {
 
   onSubmit(values){
     const { mode, id } = this.props.match.params
+    values.title = values.title.trim()
+    values.body = values.body.trim()
     if(mode === 'new'){
+      values.author = values.author.trim()
       values.id = Date.now().toString()
       values.timestamp = Date.now()
       this.props.createPost(values, () => {
@@ -75,10 +78,10 @@ renderSelect = ({ input, label, meta: { touched, error, warning } }) => {
     }
   }
   render(){
-    const  { error, categories, handleSubmit, pristine, submitting } = this.props
+    const  { handleSubmit, pristine, submitting } = this.props
     const { mode } = this.props.match.params
     const formTitle = ( mode === 'new') ? 'New Post' : 'Edit Post'
-    console.log(`error:${error}`)
+
     return (
       <div className="post-form-view">
           <h3>{formTitle}</h3>
@@ -129,17 +132,16 @@ renderSelect = ({ input, label, meta: { touched, error, warning } }) => {
 function validate(values){
   const errors = {};
   const { title, body, mode, author, category } = values
-  console.log(values)
 
-  if(!title){
+  if(!title || title.trim() === ''){
     errors.title = "Plesea enter a title!"
   }
 
-  if(!body){
+  if(!body || body.trim() === ''){
     errors.body = "Post content cannot be empty!"
   }
 
-  if( mode === 'new' && !author){
+  if( mode === 'new' && ( !author || author.trim() === '')){
     errors.author = "Please enter your Name!"
   }
 
