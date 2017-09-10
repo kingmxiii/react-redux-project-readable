@@ -35,7 +35,26 @@ class PostForm extends Component {
         <input {...input} placeholder={label} type={type} className="form-control" />
       : <textarea {...input} placeholder={label} type={type} className="form-control" rows="5" ></textarea> }
 
-      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+      {touched && ((error && <span className="text-danger"><strong>{error}</strong></span>) || (warning && <span>{warning}</span>))}
+    </div>
+  )
+}
+
+renderSelect = ({ input, label, meta: { touched, error, warning } }) => {
+  const { categories } = this.props
+  const className = `form-group ${ touched && error ? 'has-error' : ''}`
+  return (
+    <div className={ className }>
+      <label>{label}</label>
+      <select {...input} className="form-control">
+        <option value="">Select a category...</option>
+        {categories.map(category =>
+          <option value={category.name} key={category.name}>
+            {category.name}
+          </option>
+        )}
+      </select>
+      {touched && ((error && <span className="text-danger"><strong>{error}</strong></span>) || (warning && <span>{warning}</span>))}
     </div>
   )
 }
@@ -56,20 +75,15 @@ class PostForm extends Component {
     }
   }
   render(){
-    const  { categories, handleSubmit, pristine, submitting } = this.props
+    const  { error, categories, handleSubmit, pristine, submitting } = this.props
     const { mode } = this.props.match.params
     const formTitle = ( mode === 'new') ? 'New Post' : 'Edit Post'
+    console.log(`error:${error}`)
     return (
       <div className="post-form-view">
           <h3>{formTitle}</h3>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="post-form" >
 
-            <Field
-              name='mode'
-              component='input'
-              type='hidden'
-              value='hello'
-            />
 
             <Field
             name="title"
@@ -96,18 +110,12 @@ class PostForm extends Component {
           }
 
           { (mode === "new") &&
-            <div className="form-group">
-              <label>Category</label>
-              <Field name="category" component="select" label="Category" className="form-control">
-                <option value="">Select a category...</option>
-                {categories.map(category =>
-                  <option value={category.name} key={category.name}>
-                    {category.name}
-                  </option>
-                )}
+              <Field
+                name="category"
+                component={this.renderSelect}
+                label="Category"
+                >
               </Field>
-
-            </div>
           }
 
           <button type="submit" className="btn btn-primary" disabled={ pristine || submitting }>Save</button>
