@@ -1,18 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { LinkContainer } from 'react-router-bootstrap'
+import { MenuItem } from 'react-bootstrap'
 
 export default function Categories({ categories }){
   return (
     <div className="categories-menu">
-      <ul className="categories-list">
         {categories.map((cat) => {
           return (
-            <Link key={cat.name} to={`/${cat.path}`}>
-              <li>{cat.name}</li>
-            </Link>
+            <LinkContainer key={cat.name} to={`/${cat.path}`}>
+              <MenuItem>{cat.name}</MenuItem>
+            </LinkContainer>
           )
         })}
-      </ul>
     </div>
   )
 }
