@@ -238,3 +238,11 @@ form button {
   border-radius: 10px;
   background-color:white;
 }
+
+.post-form label {
+  color: #cc342b;
+}
+
+.post-form-view h3 {
+  color: #cc342b;
+}
