@@ -22,8 +22,10 @@ class PostForm extends Component {
   //Function to render fields dynamically
   //Code from redux-form documentation
   renderField = ({ input, label, type, meta: { touched, error, warning } }) => {
+    const className = `form-group ${ touched & error ? 'has-danger' : ''}`
+
     return (
-    <div className="form-group">
+    <div className={ className }>
       <label>{label}</label>
       {(type === 'text') ?
         <input {...input} placeholder={label} type={type} className="form-control" required />
