@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 import Vote from './Vote'
 import { connect } from 'react-redux'
 import { openModal, deleteComment } from '../actions'
+import Moment from 'react-moment'
+import 'moment-timezone';
+import Pencil from 'react-icons/lib/fa/pencil'
+import Trash from 'react-icons/lib/fa/trash'
+import Dashboard from 'react-icons/lib/fa/dashboard'
 
  class CommentStats extends Component {
 
@@ -16,7 +21,7 @@ import { openModal, deleteComment } from '../actions'
               e.preventDefault()
               openModal('edit', comment.id, comment.parentId ) }}
           >
-            Edit
+            <Pencil /> Edit
           </span>
           <span className="pull-left"
              onClick={ (e) => {
@@ -24,15 +29,19 @@ import { openModal, deleteComment } from '../actions'
                deleteComment(comment.id, comment.parentId)
              }}
           >
-          Delete
+          <Trash /> Delete
          </span>
           <span className="pull-left">
             <Vote id={comment.id} comp="comment" />
           </span>
         </div>
         <div className="comment-stats pull-left">
-            <span>Score: {comment.voteScore} </span>
-            <span>Posted: { commentDate.toUTCString() } </span>
+            <span><Dashboard /> Score: {comment.voteScore}</span>
+            <span>Posted:
+              <Moment tz="America/New_York" format="llll">
+                { commentDate.toUTCString() }
+              </Moment>
+              </span>
           </div>
         </div>
       )
