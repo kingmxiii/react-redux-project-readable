@@ -30,7 +30,8 @@ class PostDetails extends Component {
         <div className="post-details-header row">
           <h2 className="post-details-title">{post.title}</h2>
           <span className="post-time">
-            <Moment tz="America/New_York">{postTime.toUTCString()}</Moment>
+            Posted on:
+            <Moment tz="America/New_York" format="llll">{postTime.toUTCString()}</Moment>
           </span>
           <span className="post-author">
             By: {post.author}
