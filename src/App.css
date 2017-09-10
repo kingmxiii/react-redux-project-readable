@@ -40,6 +40,19 @@ body {
   margin-bottom: 10px;
   text-align: right;
 }
+
+.post-title span {
+  padding: 0 5px;
+  margin-right: 5px;
+  color: grey;
+  font-weight: bold;
+}
+
+/* Category View */
+.category-view h1 {
+  color: #cc342b;
+  text-transform: capitalize;
+}
 /* Post Item */
 
 .post-item {
