@@ -56,16 +56,15 @@ class PostForm extends Component {
     const { mode } = this.props.match.params
     return (
 
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-          <div>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="post-form">
+
             <Field
             name="title"
             label="Title"
             component={this.renderField}
             type="text"
             />
-          </div>
-          <div>
+
             <Field
             name="body"
             label="Body"
@@ -73,20 +72,20 @@ class PostForm extends Component {
             type="textarea"
             rows="5"
             />
-          </div>
+
           { (mode === "new") &&
-          <div>
             <Field
             name="author"
             label="Author"
             component={this.renderField}
             type="text"
             />
-          </div>
         }
+
         { (mode === "new") &&
-        <div>
-          <Field name="category" component="select" label="Category">
+        <div className="form-group">
+          <label>Category</label>
+          <Field name="category" component="select" label="Category" className="form-control">
             <option value="">Select a category...</option>
             {categories.map(category =>
               <option value={category.name} key={category.name}>
