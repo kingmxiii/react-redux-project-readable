@@ -86,6 +86,21 @@ class CommentForm extends Component {
   }
 }
 
+function validate(values){
+  const errors = {};
+  const { author, body, mode } = values
+
+  if(!body || body.trim() === ''){
+    errors.body = "Comment content cannot be empty!"
+  }
+
+  if( mode === 'new' && ( !author || author.trim() === '')){
+    errors.author = "Please enter your Name!"
+  }
+
+  return errors
+}
+
 function mapStateToProps({ comments, form, appSettings }){
   const { commentId, parentId, mode } = appSettings.commentModal
   return{
@@ -98,7 +113,8 @@ function mapStateToProps({ comments, form, appSettings }){
 }
 
 export default reduxForm({
-  form: 'CommentForm'
+  form: 'CommentForm',
+  validate
 }
 )(
   connect(mapStateToProps, { createComment, updateComment, closeModal })(CommentForm)
