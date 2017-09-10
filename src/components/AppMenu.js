@@ -3,6 +3,8 @@ import { Navbar, Nav , NavItem, NavDropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import CategoriesList from './CategoriesList'
 import { Link } from 'react-router-dom'
+import Home from 'react-icons/lib/fa/home'
+import List from 'react-icons/lib/fa/list'
 
 export default function AppMenu(props){
   return (
@@ -18,9 +20,9 @@ export default function AppMenu(props){
       <Navbar.Collapse>
         <Nav>
           <LinkContainer to="/">
-            <NavItem eventKey={1}>Home</NavItem>
+            <NavItem eventKey={1}><Home /> Home</NavItem>
           </LinkContainer>
-           <NavDropdown eventKey={2} title="Categories" id="basic-nav-dropdown">
+           <NavDropdown eventKey={2} title={<span><List /> Categories</span>} id="basic-nav-dropdown">
              <CategoriesList categories={props.cats}/>
            </NavDropdown>
         </Nav>
