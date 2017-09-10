@@ -38,7 +38,9 @@ class CommentForm extends Component {
 
   onSubmit(values){
     const { parentId, commentId, createComment, updateComment, closeModal, mode } = this.props
+    values.body = values.body.trim()
     if(mode === 'new'){
+      values.owner = values.author.trim()
       values.id = Date.now().toString()
       values.timestamp = Date.now()
       values.parentId = parentId
