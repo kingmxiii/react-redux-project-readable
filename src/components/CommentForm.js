@@ -7,14 +7,19 @@ class CommentForm extends Component {
 
   componentDidMount() {
     const { mode } = this.props
-    if(mode === 'edit'){
-        this.initForm()
-    }
+    this.initForm(mode)
   }
 
-  initForm(){
+  initForm(mode){
     const { body } = this.props.comment
-    const formData = { body }
+    let formData
+    if(mode === 'edit') {
+      formData = { body, mode }
+    }
+    else {
+      formData = { mode }
+    }
+    
     this.props.initialize(formData);
   }
 
