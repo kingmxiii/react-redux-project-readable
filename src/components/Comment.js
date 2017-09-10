@@ -1,6 +1,7 @@
 import React from 'react'
 import CommentStats from './CommentStats'
 
+//Render a comment item
 export default function Comment(props){
   const { comment } = props
   return (

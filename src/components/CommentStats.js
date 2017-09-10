@@ -8,6 +8,7 @@ import Pencil from 'react-icons/lib/fa/pencil'
 import Trash from 'react-icons/lib/fa/trash'
 import Dashboard from 'react-icons/lib/fa/dashboard'
 
+ //Render comment Stats 
  class CommentStats extends Component {
 
   render(){

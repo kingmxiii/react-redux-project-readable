@@ -3,6 +3,7 @@ import Vote from './Vote'
 import Dashboard from 'react-icons/lib/fa/dashboard'
 import Comments from 'react-icons/lib/fa/comments'
 
+//Render post stats 
 export default function PostStats(props){
   const { post, comments } = props
   return(

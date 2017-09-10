@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { DropdownButton, MenuItem } from 'react-bootstrap'
 import { sortPost, sortComments } from '../actions'
 
-class PostSort extends Component {
+//Render sort menu options for Comments and Posts
+class Sort extends Component {
   sortEntity(settings){
       const { entity, sortPost, sortComments } = this.props
       if(entity === "posts"){
@@ -15,6 +16,7 @@ class PostSort extends Component {
   }
 
   render(){
+    //Object to update Appsettings when an option is selected 
     const sortOptions = [
       {sortKey:'voteScore', sortOrder:'desc'},
       {sortKey:'voteScore', sortOrder:'asc'},
@@ -35,4 +37,4 @@ class PostSort extends Component {
   }
 }
 
-export default connect(null,{ sortPost, sortComments })(PostSort)
+export default connect(null,{ sortPost, sortComments })(Sort)

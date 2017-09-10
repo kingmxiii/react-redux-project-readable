@@ -19,7 +19,7 @@ import {
   OPEN_MODAL,
   CLOSE_MODAL
 } from '../actions'
-
+//Default app settings
 export const initialSettings = {
   posts: { sortKey: "voteScore", sortOrder: "desc"},
   comments: { sortKey: "voteScore", sortOrder: "desc"},

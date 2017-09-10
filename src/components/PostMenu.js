@@ -7,6 +7,7 @@ import Eye from 'react-icons/lib/fa/eye'
 import Pencil from 'react-icons/lib/fa/pencil'
 import Trash from 'react-icons/lib/fa/trash'
 
+//Render post menu
 export default function PostMenu(props){
   const { post, deletePost, view } = props
   return(

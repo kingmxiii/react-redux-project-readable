@@ -5,6 +5,7 @@ import _ from 'lodash'
 export default function CategoryView(props) {
 
   const  { category, posts }  = props
+  //Filter the posts that belong to passed category
   const catPosts = _.filter(posts, post => {
     return post.category === category
   })

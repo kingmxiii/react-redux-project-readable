@@ -3,6 +3,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { ButtonGroup, Button } from 'react-bootstrap'
 import Sort from './Sort'
 
+//Render a Menu for PostList and CommentList 
 export default function MenuBar(props){
   const { parentId, onNewClick } = props
   return(

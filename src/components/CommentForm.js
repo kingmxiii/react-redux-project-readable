@@ -3,15 +3,19 @@ import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { createComment, updateComment, closeModal } from '../actions'
 
+//form to create or edit a comment
 class CommentForm extends Component {
 
   componentDidMount() {
+    //Initialize form when form is loaded
     const { mode } = this.props
     this.initForm(mode)
   }
 
+  //Method that initialize the form
   initForm(mode){
     let formData
+    //Load comment data when form is on edit mode
     if(mode === 'edit') {
       const { body } = this.props.comment
       formData = { body, mode }
@@ -35,12 +39,14 @@ class CommentForm extends Component {
           {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
       </div>
   )}
-
+  //Function to handle form submit
   onSubmit(values){
     const { parentId, commentId, createComment, updateComment, closeModal, mode } = this.props
+    //Remove extra white space from body
     values.body = values.body.trim()
+    //If is a new comment set id, timeStamp and parentId
     if(mode === 'new'){
-      values.owner = values.author.trim()
+      values.author = values.author.trim()
       values.id = Date.now().toString()
       values.timestamp = Date.now()
       values.parentId = parentId
@@ -56,6 +62,7 @@ class CommentForm extends Component {
   }
   render(){
     const  { handleSubmit, closeModal, mode, pristine, submitting } = this.props
+    //Set the title of the form
     const formTitle = ( mode === 'new') ? 'New Comment' : 'Edit Comment'
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
@@ -86,6 +93,7 @@ class CommentForm extends Component {
   }
 }
 
+//Function that validates form inputs 
 function validate(values){
   const errors = {};
   const { author, body, mode } = values

@@ -4,15 +4,19 @@ import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { createPost, updatePost } from '../actions'
 
+//Render Form to edit or create a post
 class PostForm extends Component {
 
   componentDidMount() {
+    //Initilize form when form is loaded
     const { mode } = this.props.match.params
     this.initForm(mode)
   }
 
+  //Method to initilize form data
   initForm(mode){
     let formData;
+    //Load post data in case fomr is on edit mode
     if(mode === 'edit'){
       const { title, body } = this.props.post
       formData = { title, body }
@@ -24,7 +28,6 @@ class PostForm extends Component {
   }
 
   //Function to render fields dynamically
-  //Code from redux-form documentation
   renderField = ({ input, label, type, meta: { touched, error, warning } }) => {
     const className = `form-group ${ touched && error ? 'has-error' : ''}`
 
@@ -40,6 +43,7 @@ class PostForm extends Component {
   )
 }
 
+//Render Category Select input
 renderSelect = ({ input, label, meta: { touched, error, warning } }) => {
   const { categories } = this.props
   const className = `form-group ${ touched && error ? 'has-error' : ''}`
@@ -59,10 +63,13 @@ renderSelect = ({ input, label, meta: { touched, error, warning } }) => {
   )
 }
 
+  //Handle post form submit
   onSubmit(values){
     const { mode, id } = this.props.match.params
+    //Remove extra white space
     values.title = values.title.trim()
     values.body = values.body.trim()
+    //If is a new post set id and timestamp
     if(mode === 'new'){
       values.author = values.author.trim()
       values.id = Date.now().toString()
@@ -86,7 +93,6 @@ renderSelect = ({ input, label, meta: { touched, error, warning } }) => {
       <div className="post-form-view">
           <h3>{formTitle}</h3>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="post-form" >
-
 
             <Field
             name="title"
@@ -129,6 +135,7 @@ renderSelect = ({ input, label, meta: { touched, error, warning } }) => {
   }
 }
 
+//Function to validate form inputs
 function validate(values){
   const errors = {};
   const { title, body, mode, author, category } = values

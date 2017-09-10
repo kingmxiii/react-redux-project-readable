@@ -8,10 +8,12 @@ import PostStats from './PostStats'
 import PostMenu from './PostMenu'
 import CommentList from './CommentList'
 
-
+//Render detail view for a post
 class PostDetails extends Component {
   componentDidMount() {
     const { post_id } = this.props.match.params
+    /*Fetch Post and Post Comments in case the post detail view
+     Is accessed directly from the address bar */ 
     this.props.fetchPost(post_id)
     this.props.fetchComments(post_id)
   }

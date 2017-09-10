@@ -5,11 +5,8 @@ import _ from 'lodash'
 import Post from './Post'
 import MenuBar from './MenuBar'
 
+//Render a list of posts
 class PostList extends Component {
-
-  componentDidMount() {
-
-  }
 
   render(){
 

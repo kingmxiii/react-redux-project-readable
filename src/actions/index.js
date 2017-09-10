@@ -20,6 +20,7 @@ export const CLOSE_MODAL = 'CLOSE_MODAL'
 const ROOT_URL = 'http://localhost:5001'
 const  headers = { Authorization: 'reypolanco' }
 
+//Get all the post fro the server
 export function fetchPosts(){
   const request = axios.get(`${ROOT_URL}/posts`, { headers })
   return (dispatch, getState) => {
@@ -30,6 +31,7 @@ export function fetchPosts(){
     }
 }
 
+//Get a specific post
 export function fetchPost(postId){
   const request = axios.get(`${ROOT_URL}/posts/${postId}`, { headers })
   return (dispatch) => {
@@ -39,6 +41,7 @@ export function fetchPost(postId){
     }
 }
 
+//Add a new post
 export function createPost(values, callback){
   const request = axios({
     url: `${ROOT_URL}/posts`,
@@ -55,6 +58,7 @@ export function createPost(values, callback){
   }
 }
 
+//Update a post
 export function updatePost(id,values, callback){
   const request = axios({
     url: `${ROOT_URL}/posts/${id}`,
@@ -71,6 +75,7 @@ export function updatePost(id,values, callback){
   }
 }
 
+//Delete a post
 export function deletePost(id){
   const request = axios({
     url: `${ROOT_URL}/posts/${id}`,
@@ -85,6 +90,7 @@ export function deletePost(id){
   }
 }
 
+// Sort posts by given criteria
 export function sortPost(criteria){
   return {
     type: UPDATE_POST_SORT,
@@ -92,6 +98,7 @@ export function sortPost(criteria){
   }
 }
 
+// Get all comments from server
 export function fetchComments(postId){
   const request = axios.get(`${ROOT_URL}/posts/${postId}/comments`, { headers })
   return (dispatch) => {
@@ -101,6 +108,7 @@ export function fetchComments(postId){
     }
 }
 
+//Create a comment
 export function createComment(values, callback){
   const request = axios({
     url: `${ROOT_URL}/comments`,
@@ -117,6 +125,7 @@ export function createComment(values, callback){
   }
 }
 
+//Update a comment
 export function updateComment(id,values, callback){
   const request = axios({
     url: `${ROOT_URL}/comments/${id}`,
@@ -133,6 +142,7 @@ export function updateComment(id,values, callback){
   }
 }
 
+//Delete a comment
 export function deleteComment(id, parentId){
   const request = axios({
     url: `${ROOT_URL}/comments/${id}`,
@@ -147,6 +157,7 @@ export function deleteComment(id, parentId){
   }
 }
 
+//Sort comments by given criteria
 export function sortComments(criteria){
   return {
     type: SORT_COMMENTS,
@@ -154,7 +165,7 @@ export function sortComments(criteria){
   }
 }
 
-
+//Get all categories from the server
 export function fetchCategories(){
   const request = axios.get(`${ROOT_URL}/categories`, { headers })
   return (dispatch) => {
@@ -164,6 +175,7 @@ export function fetchCategories(){
   }
 }
 
+//Post a vote for a given Post
 export function postVote(postId, option){
   const request = axios({
     url: `${ROOT_URL}/posts/${postId}`,
@@ -179,6 +191,7 @@ export function postVote(postId, option){
   }
 }
 
+//Post a vote for a given Comment
 export function commentVote(id, option){
   const request = axios({
     url: `${ROOT_URL}/comments/${id}`,
@@ -194,6 +207,7 @@ export function commentVote(id, option){
   }
 }
 
+//Open  comment modal
 export function openModal(mode,commentId,parentId){
   return {
     type: OPEN_MODAL,
@@ -206,6 +220,7 @@ export function openModal(mode,commentId,parentId){
   }
 }
 
+//Close Commen Modal
 export function closeModal(){
   return {
     type: CLOSE_MODAL,

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import PostStats from './PostStats'
 import PostMenu from './PostMenu'
 import Moment from 'react-moment'
+
+//Render a post item 
 export default function Post(props){
   const { post, comments, deletePost } = props
   const postTime = new Date(post.timestamp)

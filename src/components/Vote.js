@@ -4,6 +4,7 @@ import { postVote, commentVote } from '../actions'
 import ThumbsUpIcon from 'react-icons/lib/fa/thumbs-up'
 import ThumbsDownIcon from 'react-icons/lib/fa/thumbs-down'
 
+//Render vote component for post and comment 
 class Vote extends Component {
   vote(option){
     const { id, postVote, commentVote, comp } = this.props

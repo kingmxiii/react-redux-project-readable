@@ -13,6 +13,7 @@ import _ from 'lodash'
 
 class App extends Component {
   componentDidMount() {
+    //Load categories and posts when app first load
     this.props.fetchCategories()
     this.props.fetchPosts()
   }
@@ -47,6 +48,7 @@ class App extends Component {
 
 function mapStateToProps({ posts, categories, comments, appSettings }) {
   return{
+    //Get the post from store and sort them by appSettings
     posts: _.mapKeys(_.orderBy(posts, appSettings.posts.sortKey, appSettings.posts.sortOrder), 'id'),
     categories,
     appSettings

@@ -7,6 +7,7 @@ import Menubar from './MenuBar'
 import CommentForm from './CommentForm'
 import { openModal, closeModal } from '../actions'
 
+//Render comment list for specific post
 class CommentList extends Component{
   render() {
     const { postComments, postId ,appSettings, openModal, closeModal } = this.props
@@ -59,6 +60,7 @@ class CommentList extends Component{
 
 function mapStateToProps({comments, appSettings}, ownProps){
   return {
+    //Load post comments sortedby appSettings 
     postComments: _.mapKeys(_.orderBy(comments[ownProps.postId], appSettings.comments.sortKey, appSettings.comments.sortOrder), 'id'),
     appSettings
   }
