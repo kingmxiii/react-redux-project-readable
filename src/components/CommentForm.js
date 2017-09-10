@@ -56,8 +56,10 @@ class CommentForm extends Component {
   }
   render(){
     const  { handleSubmit, closeModal, mode, pristine, submitting } = this.props
+    const formTitle = ( mode === 'new') ? 'New Comment' : 'Edit Comment'
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+          <h4>{formTitle}</h4>
           { mode === 'new' &&
 
               <Field
