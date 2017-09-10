@@ -35,13 +35,21 @@ class CommentList extends Component{
           })}
         </div>
         <Modal
-          className='comment-modal'
+          className='comment-modal modal-content'
           overlayClassName='overlay'
           isOpen={appSettings.commentModal.isOpen}
           onRequestClose={closeModal}
           contentLabel='New Comment'
         >
-          <CommentForm />
+          <div className="">
+            <div className="modal-header">
+              <button type="button" className="close" onClick={closeModal}>&times;</button>
+              <h4 className="modal-title">Comment Form</h4>
+            </div>
+            <div className="modal-body">
+              <CommentForm />
+            </div>
+          </div>
         </Modal>
 
       </div>
