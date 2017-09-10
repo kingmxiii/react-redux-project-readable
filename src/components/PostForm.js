@@ -19,8 +19,6 @@ class PostForm extends Component {
     this.props.initialize(formData);
   }
 
-
-
   //Function to render fields dynamically
   //Code from redux-form documentation
   renderField = ({ input, label, type, meta: { touched, error, warning } }) => {
@@ -28,8 +26,8 @@ class PostForm extends Component {
     <div className="form-group">
       <label>{label}</label>
       {(type === 'text') ?
-        <input {...input} placeholder={label} type={type} className="form-control" />
-      : <textarea {...input} placeholder={label} type={type} className="form-control" rows="5" ></textarea> }
+        <input {...input} placeholder={label} type={type} className="form-control" required />
+      : <textarea {...input} placeholder={label} type={type} className="form-control" rows="5" required ></textarea> }
 
       {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
     </div>
@@ -54,9 +52,11 @@ class PostForm extends Component {
   render(){
     const  { categories, handleSubmit } = this.props
     const { mode } = this.props.match.params
+    const formTitle = ( mode === 'new') ? 'New Post' : 'Edit Post'
     return (
-
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="post-form">
+      <div className="post-form-view">
+          <h3>{formTitle}</h3>
+        <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="post-form">
 
             <Field
             name="title"
@@ -80,26 +80,27 @@ class PostForm extends Component {
             component={this.renderField}
             type="text"
             />
-        }
+          }
 
-        { (mode === "new") &&
-        <div className="form-group">
-          <label>Category</label>
-          <Field name="category" component="select" label="Category" className="form-control">
-            <option value="">Select a category...</option>
-            {categories.map(category =>
-              <option value={category.name} key={category.name}>
-                {category.name}
-              </option>
-            )}
-          </Field>
-        </div>
-      }
+          { (mode === "new") &&
+            <div className="form-group">
+              <label>Category</label>
+              <Field name="category" component="select" label="Category" className="form-control">
+                <option value="">Select a category...</option>
+                {categories.map(category =>
+                  <option value={category.name} key={category.name}>
+                    {category.name}
+                  </option>
+                )}
+              </Field>
+            </div>
+          }
 
-      <button type="submit" className="btn btn-primary">Save</button>
-      <Link to="/" className="btn btn-danger">Cancel</Link>
-      </form>
-  )
+          <button type="submit" className="btn btn-primary">Save</button>
+          <Link to="/" className="btn btn-danger">Cancel</Link>
+        </form>
+      </div>
+    )
   }
 }
 
