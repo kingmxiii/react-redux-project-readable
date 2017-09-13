@@ -9,7 +9,8 @@ This Web App will let users:
 - Edit and Delete Posts and comments
 - Sort Comments and Post by TimeStamp and Score
 
-##Prerequisites
+## Prerequisites
+
   In order to run this Web Application, you will need to install and run the Readable Api server from the following link:
     [Readable API Server](https://github.com/kingmxiii/udacity-readable-api)
 
