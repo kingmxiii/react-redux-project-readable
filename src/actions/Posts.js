@@ -1,6 +1,5 @@
 import axios from 'axios'
-import * from '../utils'
-
+import * as util from '../util'
 import {
   FETCH_POSTS,
   FETCH_POST,
@@ -10,6 +9,8 @@ import {
   DELETE_POST,
   UPDATE_POST_SORT
 } from './types'
+
+const { headers, ROOT_URL } = util
 
 //Get all the post fro the server
 export function fetchPosts(){

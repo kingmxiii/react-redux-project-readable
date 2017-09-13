@@ -1,5 +1,5 @@
 import axios from 'axios'
-import * from '../utils'
+import * as util from '../util'
 
 import {
   FETCH_COMMENTS,
@@ -10,6 +10,7 @@ import {
   COMMENT_VOTE
 } from './types'
 
+const { headers, ROOT_URL } = util
 
 // Get all comments from server
 export function fetchComments(postId){

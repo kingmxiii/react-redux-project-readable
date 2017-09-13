@@ -18,7 +18,7 @@ import {
   COMMENT_VOTE,
   OPEN_MODAL,
   CLOSE_MODAL
-} from '../actions'
+} from '../actions/types'
 //Default app settings
 export const initialSettings = {
   posts: { sortKey: "voteScore", sortOrder: "desc"},
