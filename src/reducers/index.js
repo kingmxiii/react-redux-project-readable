@@ -2,14 +2,8 @@ import _ from 'lodash';
 import { combineReducers } from 'redux'
 import { reducer as form } from 'redux-form'
 import {
-  FETCH_POSTS,
-  FETCH_POST,
-  CREATE_POST,
   FETCH_CATEGORIES,
   FETCH_COMMENTS,
-  POST_VOTE,
-  UPDATE_POST,
-  DELETE_POST,
   UPDATE_POST_SORT,
   SORT_COMMENTS,
   CREATE_COMMENT,
@@ -40,26 +34,7 @@ export function appSettings(state = initialSettings, action){
       return state
   }
 }
-export function posts(state = {}, action){
-  switch(action.type){
-    case FETCH_POSTS:
-     const activePosts = action.payload.filter((post) => {
-       return !post.deleted
-     })
-     return _.mapKeys(activePosts,'id')
-    case FETCH_POST:
-      return { ...state, [action.postId]: action.payload }
-    case POST_VOTE:
-      return { ...state, [action.payload.id]: action.payload }
-    case CREATE_POST:
-      return { ...state, [action.payload.id]: action.payload }
-    case UPDATE_POST:
-      return { ...state, [action.payload.id]: action.payload }
-    case DELETE_POST:
-      return _.omit(state, action.payload)
-    default: return state;
-  }
-}
+
 
 export function categories(state = [], action){
   switch(action.type){
