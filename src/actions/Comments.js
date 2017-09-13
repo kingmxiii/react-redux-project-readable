@@ -69,14 +69,6 @@ export function deleteComment(id, parentId){
   }
 }
 
-//Sort comments by given criteria
-export function sortComments(criteria){
-  return {
-    type: SORT_COMMENTS,
-    criteria
-  }
-}
-
 //Post a vote for a given Comment
 export function commentVote(id, option){
   const request = axios({

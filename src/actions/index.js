@@ -17,32 +17,3 @@ export function fetchCategories(){
     })
   }
 }
-
-
-
-
-//Open  comment modal
-export function openModal(mode,commentId,parentId){
-  return {
-    type: OPEN_MODAL,
-    payload: {
-      isOpen: true,
-      mode,
-      commentId,
-      parentId
-    }
-  }
-}
-
-//Close Commen Modal
-export function closeModal(){
-  return {
-    type: CLOSE_MODAL,
-    payload: {
-      isOpen: false,
-      mode: null,
-      commentId: null,
-      parentId: null
-    }
-  }
-}

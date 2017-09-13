@@ -80,13 +80,6 @@ export function deletePost(id){
   }
 }
 
-// Sort posts by given criteria
-export function sortPost(criteria){
-  return {
-    type: UPDATE_POST_SORT,
-    criteria
-  }
-}
 
 //Post a vote for a given Post
 export function postVote(postId, option){
