@@ -3,13 +3,7 @@ import { combineReducers } from 'redux'
 import { reducer as form } from 'redux-form'
 import {
   FETCH_CATEGORIES,
-  FETCH_COMMENTS,
   UPDATE_POST_SORT,
-  SORT_COMMENTS,
-  CREATE_COMMENT,
-  UPDATE_COMMENT,
-  DELETE_COMMENT,
-  COMMENT_VOTE,
   OPEN_MODAL,
   CLOSE_MODAL
 } from '../actions/types'
@@ -46,35 +40,6 @@ export function categories(state = [], action){
 
 }
 
-export function comments(state = {}, action){
-  switch(action.type){
-    case FETCH_COMMENTS:
-     return {...state, [action.postId] : _.mapKeys(action.payload, 'id')}
-     case CREATE_COMMENT:
-       return { ...state,
-                [action.payload.parentId]:{
-                  ...state[action.payload.parentId],
-                  [action.payload.id]:action.payload
-                }}
-     case UPDATE_COMMENT:
-       return  { ...state,
-                [action.payload.parentId]:{
-                  ...state[action.payload.parentId],
-                  [action.payload.id]:action.payload
-                }}
-     case COMMENT_VOTE:
-        return  { ...state,
-                  [action.payload.parentId]:{
-                    ...state[action.payload.parentId],
-                    [action.payload.id]:action.payload
-                 }}
-      case DELETE_COMMENT:
-           const { id , parentId } = action.payload
-           return { ...state, [parentId]: _.omit(state[parentId], id ) }
-      default: return state;
 
-  }
-
-}
 
 export default combineReducers({posts, categories, comments, form, appSettings})
