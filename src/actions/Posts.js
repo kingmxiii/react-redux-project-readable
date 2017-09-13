@@ -1,4 +1,5 @@
 import axios from 'axios'
+import * from '../utils'
 
 import {
   FETCH_POSTS,

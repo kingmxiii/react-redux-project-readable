@@ -1,6 +1,6 @@
 import FETCH_CATEGORIES from './types'
 import axios from 'axios'
-
+import * from '../utils'
 //Get all categories from the server
 export function fetchCategories(){
   const request = axios.get(`${ROOT_URL}/categories`, { headers })
