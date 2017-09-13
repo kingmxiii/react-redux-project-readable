@@ -5,10 +5,10 @@ import {
           CREATE_POST,
           UPDATE_POST,
           DELETE_POST,
-          POST_VOTE 
+          POST_VOTE
         } from '../actions/types'
 
-export function posts(state = {}, action){
+export default function(state = {}, action){
   switch(action.type){
     case FETCH_POSTS:
      const activePosts = action.payload.filter((post) => {

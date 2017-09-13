@@ -6,8 +6,7 @@ import {
   CREATE_POST,
   POST_VOTE,
   UPDATE_POST,
-  DELETE_POST,
-  UPDATE_POST_SORT
+  DELETE_POST
 } from './types'
 
 const { headers, ROOT_URL } = util

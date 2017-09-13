@@ -1,6 +1,6 @@
 import { FETCH_CATEGORIES } from '../actions/types'
 
-export function categories(state = [], action){
+export default function(state = [], action){
   switch(action.type){
     case FETCH_CATEGORIES:
      return action.payload.categories

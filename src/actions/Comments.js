@@ -3,7 +3,6 @@ import * as util from '../util'
 
 import {
   FETCH_COMMENTS,
-  SORT_COMMENTS,
   CREATE_COMMENT,
   UPDATE_COMMENT,
   DELETE_COMMENT,

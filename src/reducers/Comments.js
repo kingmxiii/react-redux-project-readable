@@ -1,14 +1,13 @@
 import _ from 'lodash';
 import {
           FETCH_COMMENTS,
-          FETCH_COMMENT,
           UPDATE_COMMENT,
           COMMENT_VOTE,
           CREATE_COMMENT,
           DELETE_COMMENT
-        } from '../action/types'
-        
-export function comments(state = {}, action){
+        } from '../actions/types'
+
+export default function(state = {}, action){
   switch(action.type){
     case FETCH_COMMENTS:
      return {...state, [action.postId] : _.mapKeys(action.payload, 'id')}

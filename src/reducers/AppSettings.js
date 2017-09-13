@@ -5,13 +5,13 @@ import {
           CLOSE_MODAL
        } from '../actions/types'
 
-export const initialSettings = {
+const initialSettings = {
   posts: { sortKey: "voteScore", sortOrder: "desc"},
   comments: { sortKey: "voteScore", sortOrder: "desc"},
   commentModal: {isOpen: false, mode:null, commentId:null, parentId:null}
 }
 
-export function appSettings(state = initialSettings, action){
+export default function(state = initialSettings, action){
   switch(action.type){
     case UPDATE_POST_SORT:
       return { ...state, 'posts': action.criteria }
